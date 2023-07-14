@@ -5,73 +5,6 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = {
   [KeyType in keyof T]: T[KeyType];
 };
-/** Content for Home documents */
-interface HomePageDocumentData {
-  /**
-   * Slice Zone field in *Home*
-   *
-   * - **Field Type**: Slice Zone
-   * - **Placeholder**: *None*
-   * - **API ID Path**: homePage.slices[]
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/core-concepts/slices
-   *
-   */
-  slices: prismic.SliceZone<HomePageDocumentDataSlicesSlice>;
-  /**
-   * Meta Description field in *Home*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: A brief summary of the page
-   * - **API ID Path**: homePage.meta_description
-   * - **Tab**: SEO & Metadata
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
-   */
-  meta_description: prismic.KeyTextField;
-  /**
-   * Meta Image field in *Home*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: homePage.meta_image
-   * - **Tab**: SEO & Metadata
-   * - **Documentation**: https://prismic.io/docs/core-concepts/image
-   *
-   */
-  meta_image: prismic.ImageField<never>;
-  /**
-   * Meta Title field in *Home*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: A title of the page used for social media and search engines
-   * - **API ID Path**: homePage.meta_title
-   * - **Tab**: SEO & Metadata
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
-   */
-  meta_title: prismic.KeyTextField;
-}
-/**
- * Slice for *Home → Slice Zone*
- *
- */
-type HomePageDocumentDataSlicesSlice = never;
-/**
- * Home document from Prismic
- *
- * - **API ID**: `homePage`
- * - **Repeatable**: `false`
- * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
- *
- * @typeParam Lang - Language API ID of the document.
- */
-export type HomePageDocument<Lang extends string = string> =
-  prismic.PrismicDocumentWithoutUID<
-    Simplify<HomePageDocumentData>,
-    "homePage",
-    Lang
-  >;
 /** Content for MainMenu documents */
 interface MainMenuDocumentData {
   /**
@@ -149,7 +82,92 @@ export type MainMenuDocument<Lang extends string = string> =
     "mainMenu",
     Lang
   >;
-export type AllDocumentTypes = HomePageDocument | MainMenuDocument;
+/** Content for Page documents */
+interface PageDocumentData {
+  /**
+   * Title field in *Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: This is the title that appears in the tab
+   * - **API ID Path**: page.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   *
+   */
+  title: prismic.KeyTextField;
+  /**
+   * Menu field in *Page*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: page.menu
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+   *
+   */
+  menu: prismic.ContentRelationshipField;
+  /**
+   * Slice Zone field in *Page*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: page.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/core-concepts/slices
+   *
+   */
+  slices: prismic.SliceZone<PageDocumentDataSlicesSlice>;
+  /**
+   * Meta Title field in *Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: page.metaTitle
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   *
+   */
+  metaTitle: prismic.KeyTextField;
+  /**
+   * Meta Description field in *Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: page.metaDescription
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   *
+   */
+  metaDescription: prismic.KeyTextField;
+  /**
+   * Meta Image field in *Page*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: page.metaImage
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/core-concepts/image
+   *
+   */
+  metaImage: prismic.ImageField<never>;
+}
+/**
+ * Slice for *Page → Slice Zone*
+ *
+ */
+type PageDocumentDataSlicesSlice = LandingSectionSlice;
+/**
+ * Page document from Prismic
+ *
+ * - **API ID**: `page`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type PageDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
+export type AllDocumentTypes = MainMenuDocument | PageDocument;
 /**
  * Primary content in LandingSection → Primary
  *
@@ -225,12 +243,12 @@ declare module "@prismicio/client" {
   }
   namespace Content {
     export type {
-      HomePageDocumentData,
-      HomePageDocumentDataSlicesSlice,
-      HomePageDocument,
       MainMenuDocumentData,
       MainMenuDocumentDataLinksItem,
       MainMenuDocument,
+      PageDocumentData,
+      PageDocumentDataSlicesSlice,
+      PageDocument,
       AllDocumentTypes,
       LandingSectionSliceDefaultPrimary,
       LandingSectionSliceDefault,
