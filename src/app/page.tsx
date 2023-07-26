@@ -1,6 +1,5 @@
 import { createClient } from "@/prismicio";
 import styles from "./page.module.css";
-import Head from "next/head";
 import { Metadata, ResolvingMetadata } from "next";
 import { SliceZone } from "@prismicio/react";
 import { components } from "../slices";
@@ -41,5 +40,6 @@ export async function generateMetadata(
         },
       ],
     },
+    themeColor: "#fee8e3",
   };
 }
