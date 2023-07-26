@@ -5,6 +5,13 @@
   font-size: calc(15px + 0.390625vw);
 }
 
+:root {
+  --color-beige-soft: #fff6f4;
+  --color-beige-strong: #fee8e3;
+  --color-brown: #9e6633;
+  --color-text-primary: #9e6633;
+}
+
 html,
 body {
   max-width: 100vw;
@@ -14,4 +21,12 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+.rotated {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
 }

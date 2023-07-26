@@ -4,13 +4,13 @@
   position: relative;
   min-height: 100vh;
   max-height: 100vh;
-  background-color: #fff6f4;
+  background-color: var(--color-beige-soft);
   transition: all 0.4s;
 }
 
 .line {
   height: 1px;
-  background-color: #9e6633;
+  background-color: var(--color-brown);
   width: 1.5rem;
 }
 
@@ -55,7 +55,7 @@
   font-size: 4rem;
   letter-spacing: 0.7em;
   padding-left: 1em;
-  color: #9e6633;
+  color: var(--color-text-primary);
   z-index: 10;
   transition: all 0.5s ease-out;
 }
@@ -70,7 +70,7 @@
 }
 
 .subtitle {
-  color: #9e6633;
+  color: var(--color-text-primary);
   position: absolute;
   font-size: 1.5rem;
   text-align: center;
@@ -98,11 +98,6 @@
   right: -16em;
   bottom: -3em;
   object-fit: contain;
-  -webkit-transform: rotate(180deg);
-  -moz-transform: rotate(180deg);
-  -ms-transform: rotate(180deg);
-  -o-transform: rotate(180deg);
-  transform: rotate(180deg);
 }
 
 @media only screen and (max-width: 600px) {

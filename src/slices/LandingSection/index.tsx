@@ -56,7 +56,7 @@ const LandingSection = ({ slice }: LandingSectionProps): JSX.Element => {
         height={760}
         draggable={false}
         priority
-        className={styles.bottomOrnament}
+        className={clsx(styles.bottomOrnament, "rotated")}
         src="/img/floral-ornament-hd.png"
         alt="ornament"
       />
