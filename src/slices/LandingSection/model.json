@@ -12,30 +12,13 @@
       "description": "Default",
       "imageUrl": "",
       "primary": {
-        "title": {
-          "type": "StructuredText",
-          "config": {
-            "label": "Title",
-            "placeholder": "This is the bigger title",
-            "allowTargetBlank": false,
-            "single": "heading1,strong,em"
-          }
-        },
         "subtitle": {
           "type": "StructuredText",
           "config": {
             "label": "Subtitle",
-            "placeholder": "This is the smaller title",
+            "placeholder": "Noviembre 25, 2023",
             "allowTargetBlank": false,
             "single": "heading2"
-          }
-        },
-        "backgroundImage": {
-          "type": "Image",
-          "config": {
-            "label": "Background Image",
-            "constraint": {},
-            "thumbnails": []
           }
         }
       },

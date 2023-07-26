@@ -174,35 +174,15 @@ export type AllDocumentTypes = MainMenuDocument | PageDocument;
  */
 interface LandingSectionSliceDefaultPrimary {
   /**
-   * Title field in *LandingSection → Primary*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: This is the bigger title
-   * - **API ID Path**: landing_section.primary.title
-   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
-   *
-   */
-  title: prismic.RichTextField;
-  /**
    * Subtitle field in *LandingSection → Primary*
    *
    * - **Field Type**: Title
-   * - **Placeholder**: This is the smaller title
+   * - **Placeholder**: Noviembre 25, 2023
    * - **API ID Path**: landing_section.primary.subtitle
    * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
    *
    */
   subtitle: prismic.TitleField;
-  /**
-   * Background Image field in *LandingSection → Primary*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: landing_section.primary.backgroundImage
-   * - **Documentation**: https://prismic.io/docs/core-concepts/image
-   *
-   */
-  backgroundImage: prismic.ImageField<never>;
 }
 /**
  * Default variation for LandingSection Slice
