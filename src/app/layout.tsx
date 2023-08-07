@@ -1,9 +1,7 @@
-import "./globals.css";
-import { Quattrocento } from "next/font/google";
+import "./globals.scss";
 import { PrismicPreview } from "@prismicio/next";
 import { repositoryName } from "@/prismicio";
-
-const inter = Quattrocento({ weight: "400", subsets: ["latin"] });
+import { cinzel } from "./fonts";
 
 export default function RootLayout({
   children,
@@ -12,7 +10,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={cinzel.className}>
         {children}
         <PrismicPreview repositoryName={repositoryName} />
       </body>

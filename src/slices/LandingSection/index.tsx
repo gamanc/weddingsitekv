@@ -1,17 +1,10 @@
 import { Content } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 
-import { Cinzel_Decorative, Vujahday_Script, Cinzel } from "next/font/google";
 import styles from "./styles.module.css";
 import clsx from "clsx";
 import Image from "next/image";
-
-const titleFont = Cinzel_Decorative({ weight: "700", subsets: ["latin"] });
-const subtitleFont = Cinzel({ subsets: ["latin"], weight: "600" });
-const manuscriptFont = Vujahday_Script({
-  weight: "400",
-  subsets: ["latin-ext"],
-});
+import { cinzel, cinzelDecorative, manuscript } from "@/app/fonts";
 
 export type LandingSectionProps =
   SliceComponentProps<Content.LandingSectionSlice>;
@@ -24,9 +17,9 @@ const LandingSection = ({ slice }: LandingSectionProps): JSX.Element => {
       data-slice-variation={slice.variation}
       className={styles.container}
     >
-      <div className={clsx(styles.mainTitle, titleFont.className)}>
+      <div className={clsx(styles.mainTitle, cinzelDecorative.className)}>
         <p className={styles.names}>Kevin</p>
-        <p className={clsx(styles.connector, manuscriptFont.className)}>&</p>
+        <p className={clsx(styles.connector, manuscript.className)}>&</p>
         <p className={styles.names}>Vanesa</p>
 
         <div className={clsx(styles.line, styles.leftLine)} />
@@ -36,7 +29,7 @@ const LandingSection = ({ slice }: LandingSectionProps): JSX.Element => {
         field={subtitle}
         components={{
           heading2: ({ children }) => (
-            <h2 className={clsx(styles.subtitle, subtitleFont.className)}>
+            <h2 className={clsx(styles.subtitle, cinzel.className)}>
               {children}
             </h2>
           ),
