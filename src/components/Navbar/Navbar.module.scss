@@ -1,0 +1,138 @@
+@import "../../styles/mixins";
+@import "../../styles/colors";
+
+.navbar {
+  background: transparent;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  position: fixed;
+  width: 100%;
+  z-index: 900;
+}
+
+.navbarLogo {
+  color: $color-text-primary;
+  justify-self: start;
+  margin-left: 20px;
+  cursor: pointer;
+  h1 {
+    margin: 0;
+    padding: 0 2px;
+  }
+}
+
+.navMenu {
+  display: grid;
+  grid-template-columns: repeat(5, auto);
+  grid-gap: 10px;
+  list-style: none;
+  text-align: center;
+  width: 70vw;
+  justify-content: end;
+  margin-right: 2rem;
+  padding-inline-start: 0;
+}
+
+.nav-links {
+  color: $color-text-primary;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  i {
+    padding-right: 1em;
+  }
+  &:hover {
+    cursor: pointer;
+    background-color: $color-beige-strong;
+    border-radius: 4px;
+    transition: all 0.2s ease-out;
+  }
+}
+
+.fa-bars {
+  color: #fff;
+  font-size: 2rem;
+}
+
+.nav-links-mobile {
+  display: none;
+}
+
+.menuIcon {
+  display: none;
+}
+
+@include for-extra-large-devices {
+  .navMenu {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: max-content;
+    position: absolute;
+    top: 80px;
+    left: -100%;
+    opacity: 1;
+    transition: all 0.5s ease;
+    &.active {
+      background-color: $color-beige-strong;
+      left: 0;
+      opacity: 1;
+      transition: all 0.5s ease;
+      z-index: 1;
+    }
+  }
+
+  .nav-links {
+    text-align: center;
+    padding: 2rem;
+    width: 100%;
+    display: table;
+    &:hover {
+      background-color: $color-beige-soft;
+      border-radius: 0;
+      cursor: pointer;
+    }
+  }
+
+  .navbarLogo {
+    position: absolute;
+    top: -10;
+    left: 0;
+  }
+
+  .menuIcon {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(-100%, 40%);
+    font-size: 1.8rem;
+    cursor: pointer;
+  }
+
+  .fa-icon {
+    color: $color-text-primary;
+    font-size: 1.75rem;
+  }
+
+  .nav-links-mobile {
+    display: block;
+    text-align: center;
+    padding: 1.5rem;
+    margin: 2rem auto;
+    border-radius: 4px;
+    width: 80%;
+    background: $color-text-primary;
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.5rem;
+
+    &:hover {
+      background: #fff;
+      color: $color-beige-soft;
+      transition: 250ms;
+    }
+  }
+}

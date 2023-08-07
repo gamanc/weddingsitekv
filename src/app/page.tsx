@@ -3,6 +3,7 @@ import styles from "./page.module.css";
 import { Metadata, ResolvingMetadata } from "next";
 import { SliceZone } from "@prismicio/react";
 import { components } from "../slices";
+import Navbar from "@/components/Navbar";
 
 export default async function Home() {
   const client = createClient();
@@ -13,9 +14,12 @@ export default async function Home() {
   } = page;
 
   return (
-    <main className={styles.main}>
-      <SliceZone slices={slices} components={components} />
-    </main>
+    <>
+      <Navbar />
+      <main className={styles.main}>
+        <SliceZone slices={slices} components={components} />
+      </main>
+    </>
   );
 }
 
