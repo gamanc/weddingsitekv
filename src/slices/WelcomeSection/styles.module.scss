@@ -1,0 +1,73 @@
+@import "@/styles/colors";
+@import "@/styles/mixins";
+
+.container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  min-height: 100vh;
+  max-height: 100vh;
+  background-color: $color-beige-strong;
+  display: flex;
+  transition: all 0.4s;
+}
+
+.welcomeText {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  text-align: center;
+  transform: translate(-50%, -50%);
+  user-select: none;
+  color: $color-text-primary;
+  font-size: 1.5rem;
+  max-width: 600px;
+
+  @include for-large-devices {
+    font-size: 1.6rem;
+  }
+}
+
+.ornament {
+  position: relative;
+  top: 3em;
+  left: -20em;
+  width: 800px;
+  height: auto;
+  object-fit: contain;
+  -webkit-touch-callout: none;
+
+  @include for-extra-small-devices {
+    top: -16em;
+    left: -16em;
+    width: 400px;
+    height: auto;
+  }
+
+  @include for-small-devices {
+    top: 2em;
+    left: -21em;
+    height: 50vh;
+    min-height: 500px;
+    max-height: 700px;
+    width: auto;
+  }
+
+  @include for-large-devices {
+    height: 60vh;
+    min-height: 600px;
+    max-height: 800px;
+    top: 5rem;
+    left: -30em;
+    width: auto;
+  }
+
+  @include for-extra-large-devices {
+    height: 60vh;
+    min-height: 600px;
+    max-height: 800px;
+    top: 5rem;
+    left: -19em;
+    width: auto;
+  }
+}

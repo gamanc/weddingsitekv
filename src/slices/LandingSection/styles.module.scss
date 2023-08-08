@@ -92,7 +92,6 @@
   width: 800px;
   height: auto;
   object-fit: contain;
-  -webkit-touch-callout: none;
 }
 
 .bottomOrnament {
@@ -102,7 +101,6 @@
   right: -16em;
   bottom: -3em;
   object-fit: contain;
-  -webkit-touch-callout: none;
 }
 
 @include for-extra-small-devices {
