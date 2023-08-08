@@ -22,7 +22,10 @@
         "type": "Slices",
         "fieldset": "Slice Zone",
         "config": {
-          "choices": { "landing_section": { "type": "SharedSlice" } }
+          "choices": {
+            "landing_section": { "type": "SharedSlice" },
+            "welcome_section": { "type": "SharedSlice" }
+          }
         }
       }
     },
