@@ -1,7 +1,7 @@
 import { Content } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 
-import styles from "./styles.module.css";
+import styles from "./styles.module.scss";
 import clsx from "clsx";
 import Image from "next/image";
 import { cinzel, cinzelDecorative, manuscript } from "@/app/fonts";
