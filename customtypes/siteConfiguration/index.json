@@ -1,0 +1,15 @@
+{
+  "id": "siteConfiguration",
+  "label": "Site Configuration",
+  "format": "custom",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "weddingDate": {
+        "type": "Timestamp",
+        "config": { "label": "Wedding Date", "placeholder": "" }
+      }
+    }
+  }
+}

@@ -155,7 +155,7 @@ interface PageDocumentData {
  * Slice for *Page → Slice Zone*
  *
  */
-type PageDocumentDataSlicesSlice = LandingSectionSlice;
+type PageDocumentDataSlicesSlice = LandingSectionSlice | WelcomeSectionSlice;
 /**
  * Page document from Prismic
  *
@@ -167,7 +167,39 @@ type PageDocumentDataSlicesSlice = LandingSectionSlice;
  */
 export type PageDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
-export type AllDocumentTypes = MainMenuDocument | PageDocument;
+/** Content for Site Configuration documents */
+interface SiteConfigurationDocumentData {
+  /**
+   * Wedding Date field in *Site Configuration*
+   *
+   * - **Field Type**: Timestamp
+   * - **Placeholder**: *None*
+   * - **API ID Path**: siteConfiguration.weddingDate
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/core-concepts/timestamp
+   *
+   */
+  weddingDate: prismic.TimestampField;
+}
+/**
+ * Site Configuration document from Prismic
+ *
+ * - **API ID**: `siteConfiguration`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type SiteConfigurationDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<SiteConfigurationDocumentData>,
+    "siteConfiguration",
+    Lang
+  >;
+export type AllDocumentTypes =
+  | MainMenuDocument
+  | PageDocument
+  | SiteConfigurationDocument;
 /**
  * Primary content in LandingSection → Primary
  *
@@ -214,6 +246,52 @@ export type LandingSectionSlice = prismic.SharedSlice<
   "landing_section",
   LandingSectionSliceVariation
 >;
+/**
+ * Primary content in WelcomeSection → Primary
+ *
+ */
+interface WelcomeSectionSliceDefaultPrimary {
+  /**
+   * Welcome Text field in *WelcomeSection → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: welcome_section.primary.welcomeText
+   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   *
+   */
+  welcomeText: prismic.KeyTextField;
+}
+/**
+ * Default variation for WelcomeSection Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `Default`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type WelcomeSectionSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<WelcomeSectionSliceDefaultPrimary>,
+  never
+>;
+/**
+ * Slice variation for *WelcomeSection*
+ *
+ */
+type WelcomeSectionSliceVariation = WelcomeSectionSliceDefault;
+/**
+ * WelcomeSection Shared Slice
+ *
+ * - **API ID**: `welcome_section`
+ * - **Description**: `WelcomeSection`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type WelcomeSectionSlice = prismic.SharedSlice<
+  "welcome_section",
+  WelcomeSectionSliceVariation
+>;
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -229,11 +307,17 @@ declare module "@prismicio/client" {
       PageDocumentData,
       PageDocumentDataSlicesSlice,
       PageDocument,
+      SiteConfigurationDocumentData,
+      SiteConfigurationDocument,
       AllDocumentTypes,
       LandingSectionSliceDefaultPrimary,
       LandingSectionSliceDefault,
       LandingSectionSliceVariation,
       LandingSectionSlice,
+      WelcomeSectionSliceDefaultPrimary,
+      WelcomeSectionSliceDefault,
+      WelcomeSectionSliceVariation,
+      WelcomeSectionSlice,
     };
   }
 }

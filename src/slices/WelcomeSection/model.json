@@ -1,0 +1,23 @@
+{
+  "id": "welcome_section",
+  "type": "SharedSlice",
+  "name": "WelcomeSection",
+  "description": "WelcomeSection",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "welcomeText": {
+          "type": "Text",
+          "config": { "label": "Welcome Text", "placeholder": "" }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
