@@ -1,10 +1,10 @@
 import { Content } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
-
-import styles from "./styles.module.scss";
 import clsx from "clsx";
-import Image from "next/image";
+
+import FloralOrnament from "@/components/FloralOrnament";
 import { cinzel, cinzelDecorative, manuscript } from "@/app/fonts";
+import styles from "./styles.module.scss";
 
 export type LandingSectionProps =
   SliceComponentProps<Content.LandingSectionSlice>;
@@ -35,24 +35,8 @@ const LandingSection = ({ slice }: LandingSectionProps): JSX.Element => {
           ),
         }}
       />
-      <Image
-        width={772}
-        height={760}
-        draggable={false}
-        priority
-        className={styles.topOrnament}
-        src="/img/floral-ornament-hd.png"
-        alt="ornament"
-      />
-      <Image
-        width={772}
-        height={760}
-        draggable={false}
-        priority
-        className={clsx(styles.bottomOrnament, "rotated")}
-        src="/img/floral-ornament-hd.png"
-        alt="ornament"
-      />
+      <FloralOrnament className={styles.topOrnament} />
+      <FloralOrnament className={styles.bottomOrnament} rotated />
     </section>
   );
 };
