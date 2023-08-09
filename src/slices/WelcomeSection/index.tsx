@@ -6,6 +6,8 @@ import { SliceComponentProps, usePrismicClient } from "@prismicio/react";
 
 import FloralOrnament from "@/components/FloralOrnament";
 import styles from "./styles.module.scss";
+import Image from "next/image";
+import clsx from "clsx";
 
 export type WelcomeSectionProps =
   SliceComponentProps<Content.WelcomeSectionSlice>;
@@ -31,8 +33,19 @@ const WelcomeSection = ({ slice }: WelcomeSectionProps): JSX.Element => {
       data-slice-variation={slice.variation}
       className={styles.container}
     >
-      <h3 className={styles.welcomeText}>{welcomeText}</h3>
-      {weddingDate ? <h1>{weddingDate.toLocaleDateString()}</h1> : null}
+      <div className={styles.content}>
+        <h3 className={styles.welcomeText}>{welcomeText}</h3>
+        <Image
+          className={clsx("block-touch-callout", styles.dividerOrnament)}
+          src="/img/divider-ornament.png"
+          width={1107}
+          height={162}
+          alt="divider"
+          draggable={false}
+          priority
+        />
+        {weddingDate ? <h1>{weddingDate.toLocaleDateString()}</h1> : null}
+      </div>
       <FloralOrnament className={styles.ornament} rotated />
     </section>
   );
