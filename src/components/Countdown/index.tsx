@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { cinzel, cinzelDecorative } from "@/app/fonts";
 import styles from "./styles.module.scss";
+import clsx from "clsx";
 
 interface Props {
   targetDate: Date;
@@ -34,7 +36,7 @@ const Countdown = ({ targetDate }: Props) => {
   }, []);
 
   return (
-    <div className={styles.countdown}>
+    <div className={clsx(styles.countdown, cinzel.className)}>
       <div className={styles["countdown-item"]}>
         <span key={timeRemaining.days} className={styles["countdown-value"]}>
           {timeRemaining.days}

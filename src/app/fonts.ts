@@ -8,7 +8,7 @@ import {
 
 export const cinzel = Cinzel({
   subsets: ["latin"],
-  weight: "600",
+  weight: "500",
   display: "swap",
 });
 export const cinzelDecorative = Cinzel_Decorative({
