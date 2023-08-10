@@ -1,0 +1,52 @@
+@import "@/styles/mixins";
+@import "@/styles/colors";
+
+$countdownFlipDuration: 0.1s;
+
+@keyframes flipDown {
+  0% {
+    transform: rotateX(0deg);
+  }
+  100% {
+    transform: rotateX(-90deg);
+  }
+}
+.countdown {
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  color: $color-text-primary;
+
+  .countdown-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 1rem;
+
+    @include for-extra-small-devices {
+      margin: 0.5rem 0.1rem;
+      align-content: space-around;
+    }
+
+    .countdown-value {
+      font-size: 3rem;
+      animation: flipDown $countdownFlipDuration alternate-reverse;
+      transition: transform $countdownFlipDuration;
+      @include for-extra-small-devices {
+        font-size: 2.3rem;
+      }
+    }
+
+    .countdown-label {
+      margin-top: 0.5rem;
+      @include for-extra-small-devices {
+      }
+    }
+  }
+
+  .countdown-separator {
+    position: relative;
+    margin: 0 0.5rem;
+    top: -1rem;
+  }
+}
