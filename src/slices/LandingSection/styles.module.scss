@@ -15,21 +15,19 @@
   height: 1px;
   background-color: $color-brown;
   width: 1.5rem;
-}
-
-.leftLine {
-  position: absolute;
-  top: 50%;
-  transform: translate(-100%, -50%);
-  transition: all 0.5s;
-}
-
-.rightLine {
-  position: absolute;
-  top: 50%;
-  right: 0;
-  transform: translate(100%, -50%);
-  transition: all 0.5s;
+  &.leftLine {
+    position: absolute;
+    top: 50%;
+    transform: translate(-100%, -50%);
+    transition: all 0.5s;
+  }
+  &.rightLine {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translate(100%, -50%);
+    transition: all 0.5s;
+  }
 }
 
 .mainTitle {
@@ -39,18 +37,17 @@
   text-align: center;
   transform: translate(-50%, -50%);
   user-select: none;
-}
+  &:hover > .names {
+    letter-spacing: 0.6em;
+  }
 
-.mainTitle:hover > .names {
-  letter-spacing: 0.6em;
-}
+  &:hover > .leftLine {
+    width: 8rem;
+  }
 
-.mainTitle:hover > .leftLine {
-  width: 8rem;
-}
-
-.mainTitle:hover > .rightLine {
-  width: 8rem;
+  &:hover > .rightLine {
+    width: 8rem;
+  }
 }
 
 .names {
@@ -83,6 +80,12 @@
   user-select: none;
   z-index: 1;
   white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+
+  &.fadeIn {
+    opacity: 1;
+  }
 }
 
 .topOrnament {
