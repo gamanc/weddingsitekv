@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { cinzel, cinzelDecorative } from "@/app/fonts";
+import { cinzel } from "@/app/fonts";
 import styles from "./styles.module.scss";
 import clsx from "clsx";
 
