@@ -30,6 +30,10 @@
   font-size: 1.5rem;
   max-width: 600px;
   padding: 2rem;
+  z-index: 200;
+  @include for-extra-small-devices {
+    font-size: 1.2rem;
+  }
 }
 
 .dividerOrnament {
@@ -37,6 +41,7 @@
   max-width: 500px;
   height: auto;
   padding: 2rem;
+  z-index: 199;
 
   @include for-large-devices {
     max-width: 600px;
