@@ -24,6 +24,7 @@ export default async function Home() {
 }
 
 export async function generateMetadata(
+  params: {},
   parent?: ResolvingMetadata
 ): Promise<Metadata> {
   const client = createClient();
