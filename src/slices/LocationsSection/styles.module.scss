@@ -1,0 +1,115 @@
+@import "@/styles/colors";
+@import "@/styles/mixins";
+
+.container {
+  background-color: $color-beige-soft;
+  transition: all 0.4s;
+  height: 100vh;
+}
+
+.innerContainer {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  padding: 4rem 3rem;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+
+  @include for-extra-small-devices {
+    padding: 4rem 1rem;
+    flex-direction: column;
+  }
+
+  @include for-extra-large-devices {
+    padding: 4rem 6rem;
+  }
+}
+
+.locationContainer {
+  width: 50%;
+  color: $color-text-primary;
+  height: fit-content;
+  user-select: none;
+
+  @include for-extra-small-devices {
+    width: 100%;
+  }
+}
+
+.eyebrowText {
+  font-size: 1.2rem;
+}
+
+.locationTitle {
+  font-size: 3rem;
+  font-weight: normal;
+  z-index: 10;
+
+  @include for-extra-small-devices {
+    font-size: 2.3rem;
+    margin-top: 0.5rem;
+  }
+}
+
+.line {
+  height: 1px;
+  background-color: $color-brown;
+  width: 25%;
+  margin: 1rem 0;
+}
+
+.bottomContainer {
+  margin-top: 30vh;
+
+  @include for-extra-small-devices {
+    margin-top: 4.5rem;
+  }
+
+  @include for-small-devices {
+    margin-top: 45vh;
+  }
+}
+
+.ornament {
+  position: absolute;
+  object-fit: contain;
+  z-index: 0;
+
+  @include for-extra-small-devices {
+    width: 100%;
+    height: auto;
+    min-height: 400px;
+    max-height: 500px;
+    top: 1em;
+    right: -70%;
+  }
+
+  @include for-small-devices {
+    top: 5em;
+    right: -22em;
+    height: 50vh;
+    min-height: 500px;
+    max-height: 700px;
+    width: auto;
+  }
+
+  @include for-large-devices {
+    height: 50vh;
+    min-height: 600px;
+    max-height: 800px;
+    top: 5rem;
+    right: -27em;
+    width: auto;
+  }
+
+  @include for-extra-large-devices {
+    height: 60vh;
+    min-height: 600px;
+    max-height: 800px;
+    top: 5rem;
+    right: -19em;
+    width: auto;
+  }
+}

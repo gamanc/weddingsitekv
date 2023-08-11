@@ -16,7 +16,7 @@
           "type": "Text",
           "config": { "label": "Ceremony Location Name", "placeholder": "" }
         },
-        "ceremony_location_address": {
+        "ceremonyLocationAddress": {
           "type": "Text",
           "config": { "label": "Ceremony Location Address", "placeholder": "" }
         },

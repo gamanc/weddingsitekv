@@ -8,11 +8,6 @@
 				"value": "purpose",
 				"type": "Text"
 			},
-			"ceremony_location_address": {
-				"__TYPE__": "FieldContent",
-				"value": "cow",
-				"type": "Text"
-			},
 			"ceremonyLocationLink": {
 				"__TYPE__": "LinkContent",
 				"value": {
@@ -36,6 +31,11 @@
 					"__TYPE__": "ExternalLink",
 					"url": "http://google.com"
 				}
+			},
+			"ceremonyLocationAddress": {
+				"__TYPE__": "FieldContent",
+				"value": "ruler",
+				"type": "Text"
 			}
 		},
 		"items": []
