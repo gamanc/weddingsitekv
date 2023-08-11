@@ -41,3 +41,11 @@ a {
 .block-touch-callout {
   -webkit-touch-callout: none;
 }
+
+.full-screen {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  min-height: 100vh;
+  max-height: 100vh;
+}

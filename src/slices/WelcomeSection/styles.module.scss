@@ -2,11 +2,6 @@
 @import "@/styles/mixins";
 
 .container {
-  width: 100%;
-  overflow: hidden;
-  position: relative;
-  min-height: 100vh;
-  max-height: 100vh;
   background-color: $color-beige-strong;
   display: flex;
   transition: all 0.4s;
