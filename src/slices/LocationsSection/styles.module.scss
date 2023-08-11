@@ -72,6 +72,33 @@
   }
 }
 
+.locationAddressLink {
+  display: inline-block;
+  position: relative;
+  color: $color-text-primary;
+  text-decoration: none;
+  white-space: break-spaces;
+  overflow: hidden;
+  width: 75%;
+
+  &:after {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: $color-text-primary;
+    transition: width 0.7s ease-in-out;
+  }
+
+  &:hover {
+    &:after {
+      width: 100%;
+    }
+  }
+}
+
 .ornament {
   position: absolute;
   object-fit: contain;
