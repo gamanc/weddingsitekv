@@ -24,7 +24,8 @@
         "config": {
           "choices": {
             "landing_section": { "type": "SharedSlice" },
-            "welcome_section": { "type": "SharedSlice" }
+            "welcome_section": { "type": "SharedSlice" },
+            "locations_section": { "type": "SharedSlice" }
           }
         }
       }

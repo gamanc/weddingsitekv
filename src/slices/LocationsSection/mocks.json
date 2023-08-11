@@ -1,0 +1,43 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"ceremonyLocationName": {
+				"__TYPE__": "FieldContent",
+				"value": "purpose",
+				"type": "Text"
+			},
+			"ceremony_location_address": {
+				"__TYPE__": "FieldContent",
+				"value": "cow",
+				"type": "Text"
+			},
+			"ceremonyLocationLink": {
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "https://prismic.io"
+				}
+			},
+			"receptionLocationName": {
+				"__TYPE__": "FieldContent",
+				"value": "pig",
+				"type": "Text"
+			},
+			"receptionLocationAddress": {
+				"__TYPE__": "FieldContent",
+				"value": "magnet",
+				"type": "Text"
+			},
+			"receptionLocationLink": {
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "http://google.com"
+				}
+			}
+		},
+		"items": []
+	}
+]

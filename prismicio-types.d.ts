@@ -155,7 +155,10 @@ interface PageDocumentData {
  * Slice for *Page → Slice Zone*
  *
  */
-type PageDocumentDataSlicesSlice = LandingSectionSlice | WelcomeSectionSlice;
+type PageDocumentDataSlicesSlice =
+  | LandingSectionSlice
+  | WelcomeSectionSlice
+  | LocationsSectionSlice;
 /**
  * Page document from Prismic
  *
@@ -247,6 +250,102 @@ export type LandingSectionSlice = prismic.SharedSlice<
   LandingSectionSliceVariation
 >;
 /**
+ * Primary content in LocationsSection → Primary
+ *
+ */
+interface LocationsSectionSliceDefaultPrimary {
+  /**
+   * Ceremony Location Name field in *LocationsSection → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: locations_section.primary.ceremonyLocationName
+   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   *
+   */
+  ceremonyLocationName: prismic.KeyTextField;
+  /**
+   * Ceremony Location Address field in *LocationsSection → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: locations_section.primary.ceremony_location_address
+   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   *
+   */
+  ceremony_location_address: prismic.KeyTextField;
+  /**
+   * Ceremony Location Link field in *LocationsSection → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: locations_section.primary.ceremonyLocationLink
+   * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+   *
+   */
+  ceremonyLocationLink: prismic.LinkField;
+  /**
+   * Reception Location Name field in *LocationsSection → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: locations_section.primary.receptionLocationName
+   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   *
+   */
+  receptionLocationName: prismic.KeyTextField;
+  /**
+   * Reception Location Address field in *LocationsSection → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: locations_section.primary.receptionLocationAddress
+   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   *
+   */
+  receptionLocationAddress: prismic.KeyTextField;
+  /**
+   * Reception Location Link field in *LocationsSection → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: locations_section.primary.receptionLocationLink
+   * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+   *
+   */
+  receptionLocationLink: prismic.LinkField;
+}
+/**
+ * Default variation for LocationsSection Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `Default`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type LocationsSectionSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<LocationsSectionSliceDefaultPrimary>,
+  never
+>;
+/**
+ * Slice variation for *LocationsSection*
+ *
+ */
+type LocationsSectionSliceVariation = LocationsSectionSliceDefault;
+/**
+ * LocationsSection Shared Slice
+ *
+ * - **API ID**: `locations_section`
+ * - **Description**: `LocationsSection`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type LocationsSectionSlice = prismic.SharedSlice<
+  "locations_section",
+  LocationsSectionSliceVariation
+>;
+/**
  * Primary content in WelcomeSection → Primary
  *
  */
@@ -314,6 +413,10 @@ declare module "@prismicio/client" {
       LandingSectionSliceDefault,
       LandingSectionSliceVariation,
       LandingSectionSlice,
+      LocationsSectionSliceDefaultPrimary,
+      LocationsSectionSliceDefault,
+      LocationsSectionSliceVariation,
+      LocationsSectionSlice,
       WelcomeSectionSliceDefaultPrimary,
       WelcomeSectionSliceDefault,
       WelcomeSectionSliceVariation,

@@ -1,0 +1,51 @@
+{
+  "id": "locations_section",
+  "type": "SharedSlice",
+  "name": "LocationsSection",
+  "description": "LocationsSection",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "ceremonyLocationName": {
+          "type": "Text",
+          "config": { "label": "Ceremony Location Name", "placeholder": "" }
+        },
+        "ceremony_location_address": {
+          "type": "Text",
+          "config": { "label": "Ceremony Location Address", "placeholder": "" }
+        },
+        "ceremonyLocationLink": {
+          "type": "Link",
+          "config": {
+            "label": "Ceremony Location Link",
+            "placeholder": "",
+            "select": null
+          }
+        },
+        "receptionLocationName": {
+          "type": "Text",
+          "config": { "label": "Reception Location Name", "placeholder": "" }
+        },
+        "receptionLocationAddress": {
+          "type": "Text",
+          "config": { "label": "Reception Location Address", "placeholder": "" }
+        },
+        "receptionLocationLink": {
+          "type": "Link",
+          "config": {
+            "label": "Reception Location Link",
+            "placeholder": "",
+            "select": null
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
