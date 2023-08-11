@@ -269,11 +269,11 @@ interface LocationsSectionSliceDefaultPrimary {
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: locations_section.primary.ceremony_location_address
+   * - **API ID Path**: locations_section.primary.ceremonyLocationAddress
    * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
    *
    */
-  ceremony_location_address: prismic.KeyTextField;
+  ceremonyLocationAddress: prismic.KeyTextField;
   /**
    * Ceremony Location Link field in *LocationsSection → Primary*
    *
