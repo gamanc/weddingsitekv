@@ -4,6 +4,7 @@ import {
   Vujahday_Script,
   DM_Serif_Display,
   DM_Serif_Text,
+  DM_Sans,
 } from "next/font/google";
 
 export const cinzel = Cinzel({
@@ -27,6 +28,11 @@ export const DMSerifText = DM_Serif_Text({
   display: "swap",
 });
 export const DMSerifDisplay = DM_Serif_Display({
+  weight: "400",
+  subsets: ["latin-ext"],
+  display: "swap",
+});
+export const DMSans = DM_Sans({
   weight: "400",
   subsets: ["latin-ext"],
   display: "swap",
