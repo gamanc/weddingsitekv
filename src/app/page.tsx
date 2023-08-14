@@ -5,7 +5,12 @@ import { SliceZone } from "@prismicio/react";
 import { components } from "../slices";
 import Navbar from "@/components/Navbar";
 
-export default async function Home() {
+type Props = {
+  params: { id: string };
+  searchParams: { [key: string]: string | string[] | undefined };
+};
+
+export default async function Home({ params, searchParams }: Props) {
   const client = createClient();
   const page = await client.getByUID("page", ".");
 
@@ -24,7 +29,7 @@ export default async function Home() {
 }
 
 export async function generateMetadata(
-  params: {},
+  { params, searchParams }: Props,
   parent?: ResolvingMetadata
 ): Promise<Metadata> {
   const client = createClient();
