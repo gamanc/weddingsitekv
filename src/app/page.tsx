@@ -30,7 +30,7 @@ export default async function Home({ params, searchParams }: Props) {
 
 export async function generateMetadata(
   { params, searchParams }: Props,
-  parent?: ResolvingMetadata
+  parent: ResolvingMetadata
 ): Promise<Metadata> {
   const client = createClient();
   const page = await client.getByUID("page", ".");
