@@ -2,26 +2,108 @@
 @import "@/styles/colors";
 
 .navbar {
-  background: transparent;
-  height: 80px;
+  background: linear-gradient(
+    180deg,
+    $color-beige-strong 0%,
+    $color-beige-soft,
+    rgba(0, 212, 255, 0) 100%
+  );
+  height: 150px;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-between;
+  align-items: start;
   font-size: 1.2rem;
   position: fixed;
   width: 100%;
   z-index: 900;
+  padding: 0 4rem;
+  padding-top: 1rem;
 }
 
 .navbarLogo {
   color: $color-text-primary;
-  justify-self: start;
-  margin-left: 20px;
   cursor: pointer;
   h1 {
     margin: 0;
     padding: 0 2px;
   }
+}
+
+.hamburger {
+  width: 36px;
+  height: 36px;
+  margin-left: auto;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: 0.5s ease-in-out;
+  -moz-transition: 0.5s ease-in-out;
+  -o-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
+  cursor: pointer;
+
+  @include for-large-devices {
+    display: none;
+  }
+
+  span {
+    display: block;
+    position: absolute;
+    height: 1px;
+    width: 100%;
+    background: $color-text-primary;
+    opacity: 1;
+    left: 0;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transition: 0.3s ease-in-out;
+    -moz-transition: 0.3s ease-in-out;
+    -o-transition: 0.3s ease-in-out;
+    transition: 0.3s ease-in-out;
+    &:nth-child(1) {
+      top: 0px;
+    }
+    &:nth-child(2),
+    &:nth-child(3) {
+      top: 50%;
+    }
+    &:nth-child(4) {
+      top: 100%;
+    }
+  }
+}
+
+.hamburgerClose {
+  height: 36px;
+}
+
+.hamburgerClose span:nth-child(1) {
+  top: 50%;
+  width: 0%;
+  left: 50%;
+}
+
+.hamburgerClose span:nth-child(2) {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.hamburgerClose span:nth-child(3) {
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+.hamburgerClose span:nth-child(4) {
+  top: 50%;
+  width: 0%;
+  left: 50%;
 }
 
 .navMenu {
@@ -30,13 +112,12 @@
   grid-gap: 10px;
   list-style: none;
   text-align: center;
-  width: 70vw;
   justify-content: end;
   margin-right: 2rem;
   padding-inline-start: 0;
 }
 
-.nav-links {
+.navLinks {
   color: $color-text-primary;
   text-decoration: none;
   padding: 0.5rem 1rem;
@@ -51,20 +132,7 @@
   }
 }
 
-.fa-bars {
-  color: #fff;
-  font-size: 2rem;
-}
-
-.nav-links-mobile {
-  display: none;
-}
-
-.menuIcon {
-  display: none;
-}
-
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 992px) {
   .navMenu {
     display: flex;
     flex-direction: column;
@@ -84,22 +152,17 @@
     }
   }
 
-  .nav-links {
+  .navLinks {
     text-align: center;
     padding: 2rem;
     width: 100%;
     display: table;
+
     &:hover {
       background-color: $color-beige-soft;
       border-radius: 0;
       cursor: pointer;
     }
-  }
-
-  .navbarLogo {
-    position: absolute;
-    top: -10;
-    left: 0;
   }
 
   .menuIcon {
@@ -110,29 +173,5 @@
     transform: translate(-100%, 40%);
     font-size: 1.8rem;
     cursor: pointer;
-  }
-
-  .fa-icon {
-    color: $color-text-primary;
-    font-size: 1.75rem;
-  }
-
-  .nav-links-mobile {
-    display: block;
-    text-align: center;
-    padding: 1.5rem;
-    margin: 2rem auto;
-    border-radius: 4px;
-    width: 80%;
-    background: $color-text-primary;
-    text-decoration: none;
-    color: #fff;
-    font-size: 1.5rem;
-
-    &:hover {
-      background: #fff;
-      color: $color-beige-soft;
-      transition: 250ms;
-    }
   }
 }
