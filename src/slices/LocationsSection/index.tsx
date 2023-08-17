@@ -48,7 +48,13 @@ const LocationsSection = ({ slice }: LocationsSectionProps): JSX.Element => {
           </PrismicNextLink>
         </div>
 
-        <div className={clsx(styles.locationContainer, styles.bottomContainer)}>
+        <div
+          className={clsx(
+            styles.locationContainer,
+            styles.bottomContainer,
+            styles.alignRight
+          )}
+        >
           <span className={clsx(styles.eyebrowText, cinzel.className)}>
             Recepción
           </span>

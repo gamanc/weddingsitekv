@@ -16,8 +16,18 @@
   position: fixed;
   width: 100%;
   z-index: 900;
-  padding: 0 4rem;
+  padding: 0 6rem;
   padding-top: 1rem;
+
+  @include for-extra-small-devices {
+    padding: 0 1rem;
+    padding-top: 1rem;
+  }
+
+  @include for-extra-large-devices {
+    padding: 0 8rem;
+    padding-top: 1rem;
+  }
 }
 
 .navbarLogo {

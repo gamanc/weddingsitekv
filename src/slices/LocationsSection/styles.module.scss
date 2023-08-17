@@ -13,7 +13,7 @@
   top: 50%;
   left: 50%;
   display: flex;
-  padding: 4rem 3rem;
+  padding: 4rem 6rem;
   transform: translate(-50%, -50%);
   z-index: 10;
 
@@ -23,11 +23,24 @@
   }
 
   @include for-extra-large-devices {
-    padding: 4rem 6rem;
+    padding: 4rem 8rem;
+    border: 1px solid red;
+  }
+}
+
+.alignRight {
+  align-items: flex-end;
+  text-align: end;
+
+  @include for-extra-small-devices {
+    align-items: flex-start;
+    text-align: start;
   }
 }
 
 .locationContainer {
+  display: flex;
+  flex-direction: column;
   width: 50%;
   color: $color-text-primary;
   height: fit-content;
@@ -46,6 +59,7 @@
   font-size: 3rem;
   font-weight: normal;
   z-index: 10;
+  width: fit-content;
 
   @include for-extra-small-devices {
     font-size: 2.3rem;
@@ -76,26 +90,21 @@
   display: inline-block;
   position: relative;
   color: $color-text-primary;
-  text-decoration: none;
+
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  -webkit-text-decoration-color: transparent;
+  -moz-text-decoration-color: transparent;
+
+  transition: text-decoration-color 0.2s ease-in;
   white-space: break-spaces;
   overflow: hidden;
   width: 75%;
 
-  &:after {
-    content: "";
-    position: absolute;
-    bottom: -1px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background-color: $color-text-primary;
-    transition: width 0.7s ease-in-out;
-  }
-
   &:hover {
-    &:after {
-      width: 100%;
-    }
+    text-decoration-color: $color-text-primary;
+    -webkit-text-decoration-color: $color-text-primary;
+    -moz-text-decoration-color: $color-text-primary;
   }
 }
 
