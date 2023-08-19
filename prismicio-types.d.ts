@@ -158,7 +158,8 @@ interface PageDocumentData {
 type PageDocumentDataSlicesSlice =
   | LandingSectionSlice
   | WelcomeSectionSlice
-  | LocationsSectionSlice;
+  | LocationsSectionSlice
+  | RsvpSectionSlice;
 /**
  * Page document from Prismic
  *
@@ -346,6 +347,62 @@ export type LocationsSectionSlice = prismic.SharedSlice<
   LocationsSectionSliceVariation
 >;
 /**
+ * Primary content in RsvpSection → Primary
+ *
+ */
+interface RsvpSectionSliceDefaultPrimary {
+  /**
+   * Title field in *RsvpSection → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: rsvp_section.primary.title
+   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   *
+   */
+  title: prismic.KeyTextField;
+  /**
+   * Description field in *RsvpSection → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: rsvp_section.primary.description
+   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   *
+   */
+  description: prismic.KeyTextField;
+}
+/**
+ * Default variation for RsvpSection Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `Default`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type RsvpSectionSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<RsvpSectionSliceDefaultPrimary>,
+  never
+>;
+/**
+ * Slice variation for *RsvpSection*
+ *
+ */
+type RsvpSectionSliceVariation = RsvpSectionSliceDefault;
+/**
+ * RsvpSection Shared Slice
+ *
+ * - **API ID**: `rsvp_section`
+ * - **Description**: `RsvpSection`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type RsvpSectionSlice = prismic.SharedSlice<
+  "rsvp_section",
+  RsvpSectionSliceVariation
+>;
+/**
  * Primary content in WelcomeSection → Primary
  *
  */
@@ -417,6 +474,10 @@ declare module "@prismicio/client" {
       LocationsSectionSliceDefault,
       LocationsSectionSliceVariation,
       LocationsSectionSlice,
+      RsvpSectionSliceDefaultPrimary,
+      RsvpSectionSliceDefault,
+      RsvpSectionSliceVariation,
+      RsvpSectionSlice,
       WelcomeSectionSliceDefaultPrimary,
       WelcomeSectionSliceDefault,
       WelcomeSectionSliceVariation,
