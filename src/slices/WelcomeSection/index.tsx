@@ -9,6 +9,7 @@ import styles from "./styles.module.scss";
 import Image from "next/image";
 import clsx from "clsx";
 import Countdown from "@/components/Countdown";
+import DividerOrnament from "@/components/DividerOrnament";
 
 export type WelcomeSectionProps =
   SliceComponentProps<Content.WelcomeSectionSlice>;
@@ -36,15 +37,7 @@ const WelcomeSection = ({ slice }: WelcomeSectionProps): JSX.Element => {
     >
       <div className={styles.content}>
         <span className={styles.welcomeText}>{welcomeText}</span>
-        <Image
-          className={clsx("block-touch-callout", styles.dividerOrnament)}
-          src="/img/divider-ornament.png"
-          width={1107}
-          height={162}
-          alt="divider"
-          draggable={false}
-          priority
-        />
+        <DividerOrnament />
         {weddingDate && <Countdown targetDate={weddingDate} />}
       </div>
       <FloralOrnament className={styles.ornament} rotated />
