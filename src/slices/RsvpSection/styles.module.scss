@@ -1,16 +1,25 @@
 @import "@/styles/colors";
-
+@import "@/styles/mixins";
 .container {
   background-color: $color-beige-strong;
   display: flex;
   transition: all 0.4s;
+  width: 100%;
+  position: relative;
+  padding: 5rem 0 2rem 0;
+  height: fit-content;
+  min-height: 100vh;
 }
 
 .content {
-  position: absolute;
-  top: 50%;
+  position: relative;
   left: 50%;
-  transform: translate(-50%, -50%);
+  padding: 3rem 1rem;
+  -ms-transform: translate(-50%, 0%);
+  -moz-transform: translate(-50%, 0%);
+  -o-transform: translate(-50%, 0%);
+  -webkit-transform: translate(-50%, 0%);
+  transform: translate(-50%, 0%);
   user-select: none;
   display: flex;
   flex-direction: column;
@@ -27,6 +36,10 @@
   color: $color-text-primary;
   z-index: 10;
   transition: all 0.5s ease-out;
+  @include for-extra-small-devices {
+    font-size: 2.5rem;
+    max-width: 90vw;
+  }
 }
 
 .invitationMessage {

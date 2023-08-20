@@ -1,7 +1,7 @@
+import { useState } from "react";
 import { RSVPFormData } from "@/interfaces/RsvpTypes";
-import React from "react";
 import { useForm, Controller } from "react-hook-form";
-
+import styles from "./styles.module.scss";
 interface Props {
   guestKey: string;
   maxAdults: number;
@@ -9,7 +9,11 @@ interface Props {
   onSubmit: (data: RSVPFormData) => void;
 }
 
+const MESSAGE_LENGTH_LIMIT = 300;
+
 const RSVPForm = ({ maxAdults, maxKids, onSubmit }: Props) => {
+  const [messageLength, setMessageLength] = useState(0);
+
   const { handleSubmit, control, watch } = useForm<RSVPFormData>({
     defaultValues: {
       willAttend: "",
@@ -24,15 +28,16 @@ const RSVPForm = ({ maxAdults, maxKids, onSubmit }: Props) => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div>
-        <label>Asistiras?</label>
-        <div>
+        <label className={styles.askText}>¿Asistirás?</label>
+        <div className={styles.formContainer}>
           <Controller
             name="willAttend"
             control={control}
             render={({ field }) => (
               <>
-                <label>
+                <label className={styles.radioLabel}>
                   <input
+                    className={styles.radio}
                     type="radio"
                     {...field}
                     value="yes"
@@ -40,8 +45,9 @@ const RSVPForm = ({ maxAdults, maxKids, onSubmit }: Props) => {
                   />
                   Sí
                 </label>
-                <label>
+                <label className={styles.radioLabel}>
                   <input
+                    className={styles.radio}
                     type="radio"
                     {...field}
                     value="no"
@@ -56,54 +62,72 @@ const RSVPForm = ({ maxAdults, maxKids, onSubmit }: Props) => {
       </div>
       {willAttend === "yes" && (
         <>
-          <div>
-            <label>Adultos:</label>
-            <Controller
-              name="confirmedAdults"
-              control={control}
-              rules={{ required: true }}
-              render={({ field }) => (
-                <select {...field}>
-                  {Array.from({ length: maxAdults + 1 }, (_, index) => (
-                    <option key={index} value={index}>
-                      {index}
-                    </option>
-                  ))}
-                </select>
-              )}
-            />
+          <div className={styles.selectsContainer}>
+            <div className={styles.selectContainer}>
+              <label>{maxKids === 0 ? "Asistentes:" : "Adultos:"}</label>
+              <Controller
+                name="confirmedAdults"
+                control={control}
+                rules={{ required: true }}
+                render={({ field }) => (
+                  <select className={styles.select} {...field}>
+                    {Array.from({ length: maxAdults }, (_, index) => (
+                      <option key={index + 1} value={index + 1}>
+                        {index + 1}
+                      </option>
+                    ))}
+                  </select>
+                )}
+              />
+            </div>
+            {maxKids > 0 && (
+              <div className={styles.selectContainer}>
+                <label>Niños:</label>
+                <Controller
+                  name="confirmedKids"
+                  control={control}
+                  rules={{ required: true }}
+                  render={({ field }) => (
+                    <select className={styles.select} {...field}>
+                      {Array.from({ length: maxKids + 1 }, (_, index) => (
+                        <option key={index} value={index}>
+                          {index}
+                        </option>
+                      ))}
+                    </select>
+                  )}
+                />
+              </div>
+            )}
           </div>
-          <div>
-            <label>Niños:</label>
-            <Controller
-              name="confirmedKids"
-              control={control}
-              rules={{ required: true }}
-              render={({ field }) => (
-                <select {...field}>
-                  {Array.from({ length: maxKids + 1 }, (_, index) => (
-                    <option key={index} value={index}>
-                      {index}
-                    </option>
-                  ))}
-                </select>
-              )}
-            />
-          </div>
-          <div>
+          <div className={styles.messageContainer}>
             <label>Déjanos un mensaje! (opcional):</label>
             <Controller
               name="message"
               control={control}
-              render={({ field }) => <textarea {...field} maxLength={300} />}
+              render={({ field }) => (
+                <textarea
+                  {...field}
+                  maxLength={MESSAGE_LENGTH_LIMIT}
+                  onChange={(e) => {
+                    field.onChange(e);
+                    setMessageLength(e.target.value.length);
+                  }}
+                />
+              )}
             />
           </div>
+          <span>
+            {messageLength}/{MESSAGE_LENGTH_LIMIT}
+          </span>
         </>
       )}
       <div>
-        <button type="submit" disabled={!willAttend}>
-          Enviar
-        </button>
+        <div className={styles.buttonContainer}>
+          <button type="submit" disabled={!willAttend}>
+            Enviar
+          </button>
+        </div>
       </div>
     </form>
   );

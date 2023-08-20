@@ -1,0 +1,183 @@
+@import "@/styles/colors";
+@import "@/styles/mixins";
+
+.askText {
+  font-size: 1.5rem;
+}
+
+.formContainer {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+.radioLabel {
+  font-size: 1.2rem;
+  line-height: 1.1;
+  display: flex;
+  margin: 0 2rem;
+}
+
+.radioLabel:focus-within {
+  color: var(--radioLabel-color);
+}
+
+.radio {
+  /* Add if not using autoprefixer */
+  -webkit-appearance: none;
+  /* Remove most all native input styles */
+  appearance: none;
+  /* For iOS < 15 */
+  background-color: var(--form-background);
+  /* Not removed via appearance */
+  margin: 0 1.5rem;
+
+  font: inherit;
+  color: currentColor;
+  width: 1.15em;
+  height: 1.15em;
+  border: 0.15em solid currentColor;
+  border-radius: 50%;
+  transform: translateY(-0.075em);
+
+  display: grid;
+  place-content: center;
+}
+
+.radio::before {
+  content: "";
+  width: 0.65em;
+  height: 0.65em;
+  border-radius: 50%;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1em 1em var(--radioLabel-color);
+  /* Windows High Contrast Mode */
+  background-color: CanvasText;
+}
+
+.radio:checked::before {
+  transform: scale(1);
+}
+
+$glass: rgba(255, 255, 255, 0.2);
+$glass-icon: rgba(255, 255, 255, 0.3);
+
+.selectsContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.selectContainer {
+  display: flex;
+  align-items: center;
+  label {
+    height: fit-content;
+    margin-right: 1rem;
+  }
+}
+
+.select {
+  /* Reset */
+  appearance: none;
+  border: 0;
+  outline: 0;
+  font: inherit;
+  /* Personalize */
+  width: auto;
+  height: 3em;
+  padding: 0 4em 0 1em;
+  background: no-repeat right 0.8em center / 1.4em,
+    linear-gradient(to left, $glass-icon 3em, $glass 3em);
+  color: $color-text-primary;
+  border-radius: 0.25em;
+  border: 2px solid $color-text-primary;
+  cursor: pointer;
+  option {
+    color: inherit;
+    background-color: $color-beige-soft;
+  }
+  &:focus {
+    outline: none;
+  }
+  /* Remove IE arrow */
+  &::-ms-expand {
+    display: none;
+  }
+}
+
+.messageContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 0;
+  textarea {
+    margin: 1rem 0;
+    resize: none;
+    font: inherit;
+    padding: 1rem;
+    appearance: none;
+    border: 0;
+    outline: 0;
+  }
+}
+
+$gray: #bbbbbb;
+.buttonContainer {
+  width: 100%;
+  height: 40px;
+  text-align: center;
+  button {
+    font: inherit;
+    outline: none;
+    height: 2rem;
+    text-align: center;
+    width: 130px;
+    border-radius: 4px;
+    background: $color-beige-strong;
+    border: 2px solid $color-text-primary;
+    color: $color-text-primary;
+    letter-spacing: 1px;
+    text-shadow: 0;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    &:hover {
+      color: white;
+      background: $color-text-primary;
+    }
+    &:active {
+      letter-spacing: 2px;
+    }
+    &:disabled {
+      background: $color-beige-strong;
+      color: lighten($color-text-primary, 25%);
+      border: 2px solid lighten($color-text-primary, 25%);
+    }
+  }
+}
+.onclick {
+  width: 40px;
+  border-color: $gray;
+  border-width: 3px;
+  font-size: 0;
+  border-left-color: $color-text-primary;
+  animation: rotating 2s 0.25s linear infinite;
+
+  &:after {
+    content: "";
+  }
+  &:hover {
+    color: $color-text-primary;
+    background: white;
+  }
+}
+
+@keyframes rotating {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

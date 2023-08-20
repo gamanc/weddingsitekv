@@ -46,12 +46,12 @@ const RsvpSection = ({ slice }: RsvpSectionProps): JSX.Element => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className={clsx("full-screen", styles.container)}
+      className={styles.container}
     >
       <div className={styles.content}>
         {loading && <Loader />}
         {!loading && guestInfo?.willAttend === "noresponse" && (
-          <div>
+          <>
             <h1 className={styles.guestName}>{guestInfo.name}</h1>
             <DividerOrnament />
             <p>
@@ -72,7 +72,7 @@ const RsvpSection = ({ slice }: RsvpSectionProps): JSX.Element => {
               maxKids={guestInfo.kids}
               onSubmit={onSubmit}
             />
-          </div>
+          </>
         )}
 
         {!loading && guestInfo?.willAttend === "yes" && (
