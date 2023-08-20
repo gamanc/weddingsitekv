@@ -11,6 +11,7 @@ import RSVPForm from "@/components/RsvpForm";
 import { RSVPFormData } from "@/interfaces/RsvpTypes";
 import updateData from "../../../firebase/firestore/updateData";
 import Loader from "@/components/Spinner";
+import DividerOrnament from "@/components/DividerOrnament";
 
 /**
  * Props for `RsvpSection`.
@@ -47,30 +48,40 @@ const RsvpSection = ({ slice }: RsvpSectionProps): JSX.Element => {
       data-slice-variation={slice.variation}
       className={clsx("full-screen", styles.container)}
     >
-      {loading && <Loader />}
-      {!loading && guestInfo?.willAttend === "noresponse" && (
-        <div>
-          <h1>{guestInfo.name}</h1>
-          <p>
-            Tu respuesta es crucial para nuestros preparativos. ¿Nos harías
-            felices confirmando tu asistencia? Esperamos tu respuesta con
-            emoción.
-          </p>
-          <RSVPForm
-            guestKey={guestKey}
-            maxAdults={guestInfo.adults}
-            maxKids={guestInfo.kids}
-            onSubmit={onSubmit}
-          />
-        </div>
-      )}
+      <div className={styles.content}>
+        {loading && <Loader />}
+        {!loading && guestInfo?.willAttend === "noresponse" && (
+          <div>
+            <h1 className={styles.guestName}>{guestInfo.name}</h1>
+            <DividerOrnament />
+            <p>
+              Tenemos el agrado de
+              {guestInfo.adults + guestInfo.kids > 1
+                ? " invitarlos "
+                : " invitarle "}
+              a nuestro día especial.
+            </p>
+            <p className={styles.invitationMessage}>
+              Tu respuesta es crucial para nuestros preparativos. ¿Nos harías
+              felices confirmando tu asistencia? Esperamos tu respuesta con
+              emoción.
+            </p>
+            <RSVPForm
+              guestKey={guestKey}
+              maxAdults={guestInfo.adults}
+              maxKids={guestInfo.kids}
+              onSubmit={onSubmit}
+            />
+          </div>
+        )}
 
-      {!loading && guestInfo?.willAttend === "yes" && (
-        <div>Thanks for confirming, see you there!</div>
-      )}
-      {!loading && guestInfo?.willAttend === "no" && (
-        <div>Sorry to hear that, we would like to join us</div>
-      )}
+        {!loading && guestInfo?.willAttend === "yes" && (
+          <div>Thanks for confirming, see you there!</div>
+        )}
+        {!loading && guestInfo?.willAttend === "no" && (
+          <div>Sorry to hear that, we would like you to join us</div>
+        )}
+      </div>
     </section>
   );
 };

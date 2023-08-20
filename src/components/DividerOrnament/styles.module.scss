@@ -1,0 +1,13 @@
+@import "@/styles/mixins";
+
+.dividerOrnament {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  padding: 2rem;
+  z-index: 199;
+
+  @include for-large-devices {
+    max-width: 600px;
+  }
+}

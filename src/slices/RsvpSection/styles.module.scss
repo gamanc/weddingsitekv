@@ -2,5 +2,34 @@
 
 .container {
   background-color: $color-beige-strong;
+  display: flex;
   transition: all 0.4s;
+}
+
+.content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  user-select: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  color: $color-text-primary;
+  text-align: center;
+}
+
+.guestName {
+  position: relative;
+  font-size: 3.5rem;
+  font-weight: 400;
+  color: $color-text-primary;
+  z-index: 10;
+  transition: all 0.5s ease-out;
+}
+
+.invitationMessage {
+  max-width: 500px;
+  margin: 1rem auto;
 }
