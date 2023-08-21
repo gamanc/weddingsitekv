@@ -23,14 +23,9 @@ export type RsvpSectionProps = SliceComponentProps<Content.RsvpSectionSlice>;
  * Component for "RsvpSection" Slices.
  */
 const RsvpSection = ({ slice }: RsvpSectionProps): JSX.Element => {
-  const { loading, guestInfo, fetchGuestInfo, error } = useGuestInfo();
+  const { loading, guestInfo, fetchGuestInfo } = useGuestInfo();
   const [guestKey, setGuestKey] = useState("");
   const searchParams = useSearchParams();
-
-  useEffect(() => {
-    console.log("Rsvp section rendered");
-    console.log({ guestInfo, loading, error });
-  }, [guestInfo, loading, error]);
 
   useEffect(() => {
     const key = searchParams.get("key");
@@ -46,7 +41,7 @@ const RsvpSection = ({ slice }: RsvpSectionProps): JSX.Element => {
     await fetchGuestInfo(guestKey);
   };
 
-  if (!loading && !guestInfo) return <>RSVP SECTION {JSON.stringify(error)}</>;
+  if (!loading && !guestInfo) return <></>;
 
   return (
     <section
