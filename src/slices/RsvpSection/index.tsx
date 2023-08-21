@@ -34,8 +34,15 @@ const RsvpSection = ({ slice }: RsvpSectionProps): JSX.Element => {
   }, []);
 
   const onSubmit = async (data: RSVPFormData) => {
-    data.confirmedAdults = parseInt(data.confirmedAdults as any);
-    data.confirmedKids = parseInt(data.confirmedKids as any);
+    if (data.willAttend === "yes") {
+      data.confirmedAdults = parseInt(data.confirmedAdults as any);
+      data.confirmedKids = parseInt(data.confirmedKids as any);
+    }
+
+    if (data.willAttend === "no") {
+      data.confirmedAdults = 0;
+      data.confirmedKids = 0;
+    }
 
     await updateData("guests", guestKey, data);
     await fetchGuestInfo(guestKey);
