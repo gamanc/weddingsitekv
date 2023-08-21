@@ -31,7 +31,7 @@ exports.sendTelegramMessage = functions.firestore
       });
 
       const message = `🤖: ${data.name} has ${
-        data.willAttend === "yes" ? "confirmed" : "declined"
+        data.willAttend === "yes" ? "accepted" : "declined"
       } the invitation to the wedding. \n${
         data.willAttend === "yes"
           ? `Adults: ${data.confirmedAdults}\nKids: ${data.confirmedKids}\n`
