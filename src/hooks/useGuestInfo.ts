@@ -15,6 +15,8 @@ const useGuestInfo = () => {
     }
     const { result, error } = await getDocument("guests", id);
 
+    console.log("FIREBASE:", { result, error, exists: result?.exists() });
+
     if (result?.exists()) {
       setGuestInfo(result.data() as GuestInfo);
     }
