@@ -12,6 +12,7 @@ import { RSVPFormData } from "@/interfaces/RsvpTypes";
 import updateData from "../../../firebase/firestore/updateData";
 import Loader from "@/components/Spinner";
 import DividerOrnament from "@/components/DividerOrnament";
+import { DMSerifDisplay } from "@/app/fonts";
 
 /**
  * Props for `RsvpSection`.
@@ -37,7 +38,7 @@ const RsvpSection = ({ slice }: RsvpSectionProps): JSX.Element => {
     data.confirmedKids = parseInt(data.confirmedKids as any);
 
     await updateData("guests", guestKey, data);
-    fetchGuestInfo(guestKey);
+    await fetchGuestInfo(guestKey);
   };
 
   if (!loading && !guestInfo) return <></>;
@@ -52,9 +53,11 @@ const RsvpSection = ({ slice }: RsvpSectionProps): JSX.Element => {
         {loading && <Loader />}
         {!loading && guestInfo?.willAttend === "noresponse" && (
           <>
-            <h1 className={styles.guestName}>{guestInfo.name}</h1>
+            <h1 className={clsx(styles.guestName, DMSerifDisplay.className)}>
+              {guestInfo.name}
+            </h1>
             <DividerOrnament />
-            <p>
+            <p className={DMSerifDisplay.className}>
               Tenemos el agrado de
               {guestInfo.adults + guestInfo.kids > 1
                 ? " invitarlos "

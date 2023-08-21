@@ -17,7 +17,7 @@ const RSVPForm = ({ maxAdults, maxKids, onSubmit }: Props) => {
   const { handleSubmit, control, watch } = useForm<RSVPFormData>({
     defaultValues: {
       willAttend: "",
-      confirmedAdults: 0,
+      confirmedAdults: 1,
       confirmedKids: 0,
       message: "",
     },
@@ -110,16 +110,18 @@ const RSVPForm = ({ maxAdults, maxKids, onSubmit }: Props) => {
                   {...field}
                   maxLength={MESSAGE_LENGTH_LIMIT}
                   onChange={(e) => {
-                    field.onChange(e);
-                    setMessageLength(e.target.value.length);
+                    if (e.target.value.length <= MESSAGE_LENGTH_LIMIT) {
+                      field.onChange(e);
+                      setMessageLength(e.target.value.length);
+                    }
                   }}
                 />
               )}
             />
+            <span>
+              {messageLength}/{MESSAGE_LENGTH_LIMIT}
+            </span>
           </div>
-          <span>
-            {messageLength}/{MESSAGE_LENGTH_LIMIT}
-          </span>
         </>
       )}
       <div>

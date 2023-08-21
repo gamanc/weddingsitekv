@@ -6,7 +6,6 @@ import { SliceComponentProps, usePrismicClient } from "@prismicio/react";
 
 import FloralOrnament from "@/components/FloralOrnament";
 import styles from "./styles.module.scss";
-import Image from "next/image";
 import clsx from "clsx";
 import Countdown from "@/components/Countdown";
 import DividerOrnament from "@/components/DividerOrnament";

@@ -19,7 +19,7 @@
 }
 
 .radioLabel:focus-within {
-  color: var(--radioLabel-color);
+  color: $color-text-primary;
 }
 
 .radio {
@@ -28,7 +28,7 @@
   /* Remove most all native input styles */
   appearance: none;
   /* For iOS < 15 */
-  background-color: var(--form-background);
+  background-color: $color-beige-strong;
   /* Not removed via appearance */
   margin: 0 1.5rem;
 
@@ -51,7 +51,7 @@
   border-radius: 50%;
   transform: scale(0);
   transition: 120ms transform ease-in-out;
-  box-shadow: inset 1em 1em var(--radioLabel-color);
+  box-shadow: inset 1em 1em darken($color-text-primary, 10%);
   /* Windows High Contrast Mode */
   background-color: CanvasText;
 }
@@ -67,6 +67,7 @@ $glass-icon: rgba(255, 255, 255, 0.3);
   display: flex;
   flex-direction: row;
   justify-content: center;
+  margin: 3rem 0;
   gap: 1.5rem;
 }
 
@@ -111,15 +112,23 @@ $glass-icon: rgba(255, 255, 255, 0.3);
 .messageContainer {
   display: flex;
   flex-direction: column;
-  margin: 1rem 0;
+  margin: 1.5rem 0;
   textarea {
-    margin: 1rem 0;
+    background-color: $glass-icon;
+    border: 2px solid $color-text-primary;
+    border-radius: 0.25em;
+    margin: 1rem 0 0.2rem 0;
     resize: none;
     font: inherit;
+    color: inherit;
     padding: 1rem;
     appearance: none;
     border: 0;
     outline: 0;
+  }
+  span {
+    text-align: end;
+    font-size: small;
   }
 }
 
