@@ -41,7 +41,7 @@ const RsvpSection = ({ slice }: RsvpSectionProps): JSX.Element => {
     await fetchGuestInfo(guestKey);
   };
 
-  if (!loading && !guestInfo) return <>{JSON.stringify(error)}</>;
+  if (!loading && !guestInfo) return <>RSVP SECTION {JSON.stringify(error)}</>;
 
   return (
     <section
@@ -77,7 +77,6 @@ const RsvpSection = ({ slice }: RsvpSectionProps): JSX.Element => {
             />
           </>
         )}
-        {JSON.stringify({ error, guestInfo })}
 
         {!loading && guestInfo?.willAttend === "yes" && (
           <div>Thanks for confirming, see you there!</div>
