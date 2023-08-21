@@ -28,6 +28,11 @@ const RsvpSection = ({ slice }: RsvpSectionProps): JSX.Element => {
   const searchParams = useSearchParams();
 
   useEffect(() => {
+    console.log("Rsvp section rendered");
+    console.log({ guestInfo, loading, error });
+  }, [guestInfo, loading, error]);
+
+  useEffect(() => {
     const key = searchParams.get("key");
     setGuestKey(key || "");
     fetchGuestInfo(key || "");
