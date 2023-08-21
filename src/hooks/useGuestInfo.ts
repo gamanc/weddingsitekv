@@ -9,22 +9,28 @@ const useGuestInfo = () => {
 
   const fetchGuestInfo = async (id: string) => {
     setLoading(true);
-    if (!id || id === "") {
+    try {
+      if (!id || id === "") {
+        setLoading(false);
+        return;
+      }
+      const { result, error } = await getDocument("guests", id);
+
+      console.log("FIREBASE:", { result, error, exists: result?.exists() });
+
+      if (result?.exists()) {
+        setGuestInfo(result.data() as GuestInfo);
+      }
+
+      if (error) {
+        setError(error);
+      }
+    } catch (e) {
+      setError(e);
+      console.log({ e });
+    } finally {
       setLoading(false);
-      return;
     }
-    const { result, error } = await getDocument("guests", id);
-
-    console.log("FIREBASE:", { result, error, exists: result?.exists() });
-
-    if (result?.exists()) {
-      setGuestInfo(result.data() as GuestInfo);
-    }
-
-    if (error) {
-      setError(error);
-    }
-    setLoading(false);
   };
 
   return { loading, guestInfo, error, fetchGuestInfo };
