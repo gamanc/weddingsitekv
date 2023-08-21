@@ -17,45 +17,47 @@ exports.sendTelegramMessage = functions.firestore
   .onWrite(async (snapshot, context) => {
     const data = snapshot.after.data();
 
-    const guestsCollection = admin.firestore().collection("guests");
+    if (data.willAttend !== "noresponse") {
+      const guestsCollection = admin.firestore().collection("guests");
 
-    try {
-      const querySnapshot = await guestsCollection.get();
-      let totalAdults = 0;
-      let totalKids = 0;
+      try {
+        const querySnapshot = await guestsCollection.get();
+        let totalAdults = 0;
+        let totalKids = 0;
 
-      querySnapshot.forEach((doc) => {
-        const data = doc.data();
-        totalAdults += data.confirmedAdults || 0;
-        totalKids += data.confirmedKids || 0;
-      });
+        querySnapshot.forEach((doc) => {
+          const data = doc.data();
+          totalAdults += data.confirmedAdults || 0;
+          totalKids += data.confirmedKids || 0;
+        });
 
-      const message = `🤖: *${data.name}* has ${
-        data.willAttend === "yes" ? "accepted" : "declined"
-      } the invitation to the wedding. \n${
-        data.willAttend === "yes"
-          ? `Adults: ${data.confirmedAdults}\nKids: ${data.confirmedKids}\n`
-          : ""
-      }${
-        data.message ? `They wanted to say: \n _${data.message}_` : ""
-      }\n\n*Confirmed Attendees Balance*\nAdults: ${totalAdults}\nKids: ${totalKids}\n*Total Attendees: ${
-        totalAdults + totalKids
-      }*\n🤓📝`;
+        const message = `🤖: *${data.name}* has ${
+          data.willAttend === "yes" ? "accepted" : "declined"
+        } the invitation to the wedding. \n${
+          data.willAttend === "yes"
+            ? `Adults: ${data.confirmedAdults}\nKids: ${data.confirmedKids}\n`
+            : ""
+        }${
+          data.message ? `They wanted to say: \n _${data.message}_` : ""
+        }\n\n*Confirmed Attendees Balance*\nAdults: ${totalAdults}\nKids: ${totalKids}\n*Total Attendees: ${
+          totalAdults + totalKids
+        }*\n🤓📝`;
 
-      const telegramApiToken = process.env.BOT_TOKEN;
-      const chatId = process.env.CHANNEL_ID;
+        const telegramApiToken = process.env.BOT_TOKEN;
+        const chatId = process.env.CHANNEL_ID;
 
-      const telegramApiUrl = `https://api.telegram.org/bot${telegramApiToken}/sendMessage`;
+        const telegramApiUrl = `https://api.telegram.org/bot${telegramApiToken}/sendMessage`;
 
-      await axios.post(telegramApiUrl, {
-        chat_id: chatId,
-        text: message,
-        parse_mode: "markdown",
-      });
+        await axios.post(telegramApiUrl, {
+          chat_id: chatId,
+          text: message,
+          parse_mode: "markdown",
+        });
 
-      console.log("Telegram message sent successfully.");
-    } catch (error) {
-      console.error("Error sending Telegram message:", error);
+        console.log("Telegram message sent successfully.");
+      } catch (error) {
+        console.error("Error sending Telegram message:", error);
+      }
     }
   });
 
