@@ -46,3 +46,72 @@
   max-width: 500px;
   margin: 1rem auto;
 }
+
+.topOrnament {
+  position: absolute;
+  top: 3em;
+  left: -20em;
+  width: 800px;
+  height: auto;
+  object-fit: contain;
+}
+
+.bottomOrnament {
+  position: absolute;
+  width: 800px;
+  height: auto;
+  top: 3em;
+  right: -20em;
+  object-fit: contain;
+}
+
+@include for-extra-small-devices {
+  .topOrnament {
+    display: none;
+  }
+
+  .bottomOrnament {
+    display: none;
+  }
+}
+
+@include for-small-devices {
+  .topOrnament {
+    top: 5em;
+    left: -23em;
+    height: 40vh;
+    min-height: 500px;
+    max-height: 700px;
+    width: auto;
+  }
+
+  .bottomOrnament {
+    width: auto;
+    height: 40vh;
+    min-height: 500px;
+    max-height: 700px;
+    right: -23em;
+    top: 5em;
+  }
+}
+
+@include for-extra-large-devices {
+  .topOrnament {
+    height: 60vh;
+    min-height: 600px;
+    max-height: 800px;
+    top: 1rem;
+    left: -15em;
+    width: auto;
+  }
+
+  .bottomOrnament {
+    position: absolute;
+    width: auto;
+    height: 60vh;
+    min-height: 600px;
+    max-height: 800px;
+    right: -15rem;
+    top: 1rem;
+  }
+}
