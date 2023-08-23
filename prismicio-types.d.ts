@@ -362,15 +362,35 @@ interface RsvpSectionSliceDefaultPrimary {
    */
   title: prismic.KeyTextField;
   /**
-   * Description field in *RsvpSection → Primary*
+   * Invitation Message field in *RsvpSection → Primary*
    *
-   * - **Field Type**: Text
+   * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: rsvp_section.primary.description
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   * - **API ID Path**: rsvp_section.primary.invitationMessage
+   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
    *
    */
-  description: prismic.KeyTextField;
+  invitationMessage: prismic.RichTextField;
+  /**
+   * Invite Accepted Message field in *RsvpSection → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: rsvp_section.primary.inviteAcceptedMessage
+   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+   *
+   */
+  inviteAcceptedMessage: prismic.RichTextField;
+  /**
+   * Invite Declined Message field in *RsvpSection → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: rsvp_section.primary.inviteDeclinedMessage
+   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+   *
+   */
+  inviteDeclinedMessage: prismic.RichTextField;
 }
 /**
  * Default variation for RsvpSection Slice

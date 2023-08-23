@@ -10,7 +10,7 @@ export type GuestInfo = {
 };
 
 export interface RSVPFormData {
-  willAttend: "yes" | "no";
+  willAttend: "" | "yes" | "no";
   confirmedAdults: number;
   confirmedKids: number;
   message: string;

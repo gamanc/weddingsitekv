@@ -100,29 +100,31 @@ const RSVPForm = ({ maxAdults, maxKids, onSubmit }: Props) => {
               </div>
             )}
           </div>
-          <div className={styles.messageContainer}>
-            <label>Déjanos un mensaje! (opcional):</label>
-            <Controller
-              name="message"
-              control={control}
-              render={({ field }) => (
-                <textarea
-                  {...field}
-                  maxLength={MESSAGE_LENGTH_LIMIT}
-                  onChange={(e) => {
-                    if (e.target.value.length <= MESSAGE_LENGTH_LIMIT) {
-                      field.onChange(e);
-                      setMessageLength(e.target.value.length);
-                    }
-                  }}
-                />
-              )}
-            />
-            <span>
-              {messageLength}/{MESSAGE_LENGTH_LIMIT}
-            </span>
-          </div>
         </>
+      )}
+      {willAttend && (
+        <div className={styles.messageContainer}>
+          <label>Déjanos un mensaje! (opcional):</label>
+          <Controller
+            name="message"
+            control={control}
+            render={({ field }) => (
+              <textarea
+                {...field}
+                maxLength={MESSAGE_LENGTH_LIMIT}
+                onChange={(e) => {
+                  if (e.target.value.length <= MESSAGE_LENGTH_LIMIT) {
+                    field.onChange(e);
+                    setMessageLength(e.target.value.length);
+                  }
+                }}
+              />
+            )}
+          />
+          <span>
+            {messageLength}/{MESSAGE_LENGTH_LIMIT}
+          </span>
+        </div>
       )}
       <div>
         <div className={styles.buttonContainer}>
