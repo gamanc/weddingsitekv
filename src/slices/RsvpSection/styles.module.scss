@@ -29,16 +29,31 @@
   text-align: center;
 }
 
-.guestName {
+.formContent {
   position: relative;
+  padding: 3rem 1rem;
+}
+
+.guestName {
+  width: 100vw;
+  text-align: center;
+  position: relative;
+  white-space: nowrap;
   font-size: 3.5rem;
   font-weight: 400;
+  letter-spacing: 0.1em;
   color: $color-text-primary;
   z-index: 10;
   transition: all 0.5s ease-out;
   @include for-extra-small-devices {
     font-size: 2.5rem;
-    max-width: 90vw;
+    max-width: 120vh;
+  }
+}
+
+.guestNameVisible {
+  h1 {
+    letter-spacing: normal;
   }
 }
 

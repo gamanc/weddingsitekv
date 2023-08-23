@@ -14,6 +14,9 @@ import Loader from "@/components/Spinner";
 import DividerOrnament from "@/components/DividerOrnament";
 import { DMSerifDisplay } from "@/app/fonts";
 import FloralOrnament from "@/components/FloralOrnament";
+import useFadeInOut from "@/hooks/useFadeInOut";
+import useVisibleOnScreen from "@/hooks/useVisibleOnScreen";
+import useFadeOnScroll from "@/hooks/useFadeOnScroll";
 
 /**
  * Props for `RsvpSection`.
@@ -27,6 +30,20 @@ const RsvpSection = ({ slice }: RsvpSectionProps): JSX.Element => {
   const { loading, guestInfo, fetchGuestInfo } = useGuestInfo();
   const [guestKey, setGuestKey] = useState("");
   const searchParams = useSearchParams();
+
+  const { getFadeClassNames, getTargetRef } = useFadeOnScroll({
+    containerClass: "fade-in-out",
+    visibleClass: clsx("visible", styles.guestNameVisible),
+  });
+
+  const {
+    getFadeClassNames: getContentFadeClassNames,
+    getTargetRef: getContentTargetRef,
+  } = useFadeOnScroll({
+    containerClass: "fade-in-out",
+    visibleClass: "visible",
+    delay: 1000,
+  });
 
   useEffect(() => {
     const key = searchParams.get("key");
@@ -56,21 +73,22 @@ const RsvpSection = ({ slice }: RsvpSectionProps): JSX.Element => {
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
       className={styles.container}
+      ref={getContentTargetRef()}
     >
       <FloralOrnament className={styles.topOrnament} flipped />
       <FloralOrnament className={styles.bottomOrnament} />
-      <div className={styles.content}>
+      <div ref={getTargetRef()} className={styles.content}>
         {loading && <Loader />}
         {!loading && guestInfo?.name && (
-          <>
+          <div className={getFadeClassNames()}>
             <h1 className={clsx(styles.guestName, DMSerifDisplay.className)}>
               {guestInfo.name}
             </h1>
             <DividerOrnament />
-          </>
+          </div>
         )}
         {!loading && guestInfo?.willAttend === "noresponse" && (
-          <>
+          <div className={clsx(styles.formContent, getContentFadeClassNames())}>
             <p className={DMSerifDisplay.className}>
               Tenemos el agrado de
               {guestInfo.adults + guestInfo.kids > 1
@@ -87,16 +105,29 @@ const RsvpSection = ({ slice }: RsvpSectionProps): JSX.Element => {
               maxKids={guestInfo.kids}
               onSubmit={onSubmit}
             />
-          </>
+          </div>
         )}
 
         {!loading && guestInfo?.willAttend === "yes" && (
-          <div className={styles.invitationMessage}>
+          <div
+            className={clsx(
+              styles.invitationMessage,
+              styles.formContent,
+              getContentFadeClassNames()
+            )}
+          >
             <PrismicRichText field={slice.primary.inviteAcceptedMessage} />
           </div>
         )}
+
         {!loading && guestInfo?.willAttend === "no" && (
-          <div className={styles.invitationMessage}>
+          <div
+            className={clsx(
+              styles.invitationMessage,
+              styles.formContent,
+              getContentFadeClassNames()
+            )}
+          >
             <PrismicRichText field={slice.primary.inviteDeclinedMessage} />
           </div>
         )}
