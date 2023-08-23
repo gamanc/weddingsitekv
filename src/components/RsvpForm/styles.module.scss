@@ -60,8 +60,9 @@
   transform: scale(1);
 }
 
-$glass: rgba(255, 255, 255, 0.2);
+$glass: rgba(255, 255, 255, 0.65);
 $glass-icon: rgba(255, 255, 255, 0.3);
+$glass-icon-end: rgba(255, 255, 255, 0.2);
 
 .selectsContainer {
   display: flex;
@@ -91,7 +92,7 @@ $glass-icon: rgba(255, 255, 255, 0.3);
   height: 3em;
   padding: 0 4em 0 1em;
   background: no-repeat right 0.8em center / 1.4em,
-    linear-gradient(to left, $glass-icon 3em, $glass 3em);
+    linear-gradient(to left, $glass-icon 3em, $glass-icon-end 3em);
   color: $color-text-primary;
   border-radius: 0.25em;
   border: 2px solid $color-text-primary;
@@ -114,12 +115,11 @@ $glass-icon: rgba(255, 255, 255, 0.3);
   flex-direction: column;
   margin: 1.5rem 0;
   textarea {
-    background-color: $glass-icon;
+    background-color: $glass;
     border: 2px solid $color-text-primary;
     border-radius: 0.25em;
     margin: 1rem 0 0.2rem 0;
     resize: none;
-    font: inherit;
     color: inherit;
     padding: 1rem;
     appearance: none;
@@ -129,6 +129,11 @@ $glass-icon: rgba(255, 255, 255, 0.3);
   span {
     text-align: end;
     font-size: small;
+    width: fit-content;
+    margin-left: auto;
+    background-color: rgba($color-beige-strong, 0.9);
+    padding: 0.5rem;
+    border-radius: 5px;
   }
 }
 

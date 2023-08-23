@@ -57,8 +57,8 @@ const RsvpSection = ({ slice }: RsvpSectionProps): JSX.Element => {
       data-slice-variation={slice.variation}
       className={styles.container}
     >
-      <FloralOrnament className={styles.topOrnament} flipped rotated />
-      <FloralOrnament className={styles.bottomOrnament} rotated />
+      <FloralOrnament className={styles.topOrnament} flipped />
+      <FloralOrnament className={styles.bottomOrnament} />
       <div className={styles.content}>
         {loading && <Loader />}
         {!loading && guestInfo?.name && (

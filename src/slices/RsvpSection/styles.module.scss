@@ -23,8 +23,8 @@
   user-select: none;
   display: flex;
   flex-direction: column;
-  width: 100%;
   align-items: center;
+  justify-content: center;
   color: $color-text-primary;
   text-align: center;
 }
@@ -67,51 +67,63 @@
 
 @include for-extra-small-devices {
   .topOrnament {
-    display: none;
+    width: auto;
+    top: calc(65% - 250px);
+    left: -26em;
+    height: 50vh;
+    min-height: 500px;
+    max-height: 700px;
+    opacity: 80%;
   }
 
   .bottomOrnament {
-    display: none;
+    width: auto;
+    top: calc(65% - 250px);
+    right: -26em;
+    height: 50vh;
+    min-height: 500px;
+    max-height: 700px;
+    opacity: 80%;
   }
 }
 
 @include for-small-devices {
   .topOrnament {
-    top: 5em;
+    top: calc(50% - 300px);
     left: -23em;
     height: 40vh;
+    width: auto;
     min-height: 500px;
     max-height: 700px;
-    width: auto;
   }
 
   .bottomOrnament {
-    width: auto;
+    top: calc(50% - 300px);
+    right: -23em;
     height: 40vh;
+    width: auto;
     min-height: 500px;
     max-height: 700px;
-    right: -23em;
-    top: 5em;
   }
 }
 
 @include for-extra-large-devices {
   .topOrnament {
+    top: 10em;
+    left: -18em;
+    width: auto;
     height: 60vh;
     min-height: 600px;
     max-height: 800px;
-    top: 1rem;
-    left: -15em;
-    width: auto;
   }
 
   .bottomOrnament {
     position: absolute;
+    top: 10em;
+    right: -18rem;
     width: auto;
     height: 60vh;
     min-height: 600px;
     max-height: 800px;
-    right: -15rem;
-    top: 1rem;
   }
 }

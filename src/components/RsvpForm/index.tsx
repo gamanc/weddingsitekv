@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { RSVPFormData } from "@/interfaces/RsvpTypes";
 import { useForm, Controller } from "react-hook-form";
+import { DMSans } from "@/app/fonts";
 import styles from "./styles.module.scss";
 interface Props {
   guestKey: string;
@@ -111,6 +112,7 @@ const RSVPForm = ({ maxAdults, maxKids, onSubmit }: Props) => {
             render={({ field }) => (
               <textarea
                 {...field}
+                className={DMSans.className}
                 maxLength={MESSAGE_LENGTH_LIMIT}
                 onChange={(e) => {
                   if (e.target.value.length <= MESSAGE_LENGTH_LIMIT) {
