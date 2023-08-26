@@ -14,8 +14,6 @@ import Loader from "@/components/Spinner";
 import DividerOrnament from "@/components/DividerOrnament";
 import { DMSerifDisplay } from "@/app/fonts";
 import FloralOrnament from "@/components/FloralOrnament";
-import useFadeInOut from "@/hooks/useFadeInOut";
-import useVisibleOnScreen from "@/hooks/useVisibleOnScreen";
 import useFadeOnScroll from "@/hooks/useFadeOnScroll";
 
 /**
