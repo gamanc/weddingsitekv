@@ -96,7 +96,7 @@
   -moz-text-decoration-color: transparent;
 
   transition: text-decoration-color 0.2s ease-in;
-  white-space: break-spaces;
+  white-space: pre-line;
   overflow: hidden;
   width: 75%;
 
@@ -104,6 +104,11 @@
     text-decoration-color: $color-text-primary;
     -webkit-text-decoration-color: $color-text-primary;
     -moz-text-decoration-color: $color-text-primary;
+  }
+
+  svg {
+    display: inline;
+    margin-left: 0.2em;
   }
 }
 
