@@ -7,7 +7,7 @@
 
 :root {
   --color-beige-soft: #fff6f4;
-  --color-beige-strong: #fee8e3;
+  --color-beige-strong: #ffeeea;
   --color-brown: #9e6633;
   --color-text-primary: #9e6633;
 }
@@ -15,7 +15,19 @@
 html,
 body {
   max-width: 100vw;
+  scroll-behavior: smooth;
   overflow-x: hidden;
+}
+
+main {
+  /* Apply alternating colors using :nth-child selectors */
+  section:nth-child(odd) {
+    background-color: var(--color-beige-soft);
+  }
+
+  section:nth-child(even) {
+    background-color: var(--color-beige-strong);
+  }
 }
 
 a {
