@@ -4,7 +4,6 @@ import { memo, useState, useRef } from "react";
 import useOutsideClick from "../../hooks/useOutsideClick";
 import styles from "./Navbar.module.scss";
 import clsx from "clsx";
-import Link from "next/link";
 
 const Navbar = () => {
   const [clicked, setClicked] = useState(false);
@@ -21,7 +20,7 @@ const Navbar = () => {
       <a
         className={styles.navbarLogo}
         style={{ textDecoration: "none" }}
-        href="#landing"
+        href="#"
       >
         <h1>Kevin & Vanesa</h1>
       </a>
@@ -51,7 +50,9 @@ const Navbar = () => {
           <a className={styles.navLinks} href="#rsvp">
             RSVP
           </a>
-          <a className={styles.navLinks}>Galería</a>
+          <a className={styles.navLinks} href="#gift-registry">
+            Regalos
+          </a>
         </li>
       </ul>
     </nav>

@@ -34,7 +34,7 @@ const LandingSection = ({ slice }: LandingSectionProps): JSX.Element => {
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
       className={clsx("full-screen", styles.container)}
-      id="landing"
+      id="#"
     >
       <div className={clsx(styles.mainTitle, cinzelDecorative.className)}>
         <p className={styles.names}>Kevin</p>
