@@ -27,7 +27,7 @@ const GiftRegistrySection = ({
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className={clsx("full-screen", styles.container)}
+      className={styles.container}
       id="gift-registry"
     >
       <div className={styles.content}>

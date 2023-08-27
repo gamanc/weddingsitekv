@@ -2,21 +2,26 @@
 @import "@/styles/mixins";
 
 .container {
-  background-color: $color-beige-strong;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+
   display: flex;
   transition: all 0.4s;
+  padding: 1rem 0 2rem 0;
+  height: fit-content;
 }
 
 .content {
-  position: absolute;
-  top: 50%;
+  position: relative;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, 0%);
   user-select: none;
   display: flex;
   flex-direction: column;
   width: 100%;
   align-items: center;
+  padding: 3rem 0.5rem;
 }
 
 .welcomeText {
@@ -42,6 +47,10 @@
   max-width: 350px;
   height: auto;
   margin: 1rem 0;
+
+  @include for-extra-small-devices {
+    max-width: 200px;
+  }
 }
 
 .giftRegistryLink {
