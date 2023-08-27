@@ -72,6 +72,7 @@ const RsvpSection = ({ slice }: RsvpSectionProps): JSX.Element => {
       data-slice-variation={slice.variation}
       className={styles.container}
       ref={getContentTargetRef()}
+      id="rsvp"
     >
       <FloralOrnament className={styles.topOrnament} flipped />
       <FloralOrnament className={styles.bottomOrnament} />

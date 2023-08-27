@@ -29,6 +29,7 @@ const LocationsSection = ({ slice }: LocationsSectionProps): JSX.Element => {
 
   return (
     <section
+      id="reception"
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
       className={clsx("full-screen", styles.container)}

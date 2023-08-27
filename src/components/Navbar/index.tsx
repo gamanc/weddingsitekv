@@ -4,6 +4,7 @@ import { memo, useState, useRef } from "react";
 import useOutsideClick from "../../hooks/useOutsideClick";
 import styles from "./Navbar.module.scss";
 import clsx from "clsx";
+import Link from "next/link";
 
 const Navbar = () => {
   const [clicked, setClicked] = useState(false);
@@ -17,7 +18,11 @@ const Navbar = () => {
 
   return (
     <nav className={styles.navbar}>
-      <a className={styles.navbarLogo} style={{ textDecoration: "none" }}>
+      <a
+        className={styles.navbarLogo}
+        style={{ textDecoration: "none" }}
+        href="#landing"
+      >
         <h1>Kevin & Vanesa</h1>
       </a>
       <div
@@ -37,8 +42,15 @@ const Navbar = () => {
         className={clsx(styles.navMenu, { [styles.active]: clicked })}
       >
         <li>
-          <a className={styles.navLinks}>Inicio</a>
-          <a className={styles.navLinks}>Recepción</a>
+          <a className={styles.navLinks} href="#start">
+            Inicio
+          </a>
+          <a className={styles.navLinks} href="#reception">
+            Recepción
+          </a>
+          <a className={styles.navLinks} href="#rsvp">
+            RSVP
+          </a>
           <a className={styles.navLinks}>Galería</a>
         </li>
       </ul>
