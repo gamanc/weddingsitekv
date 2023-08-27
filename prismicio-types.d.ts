@@ -159,7 +159,8 @@ type PageDocumentDataSlicesSlice =
   | LandingSectionSlice
   | WelcomeSectionSlice
   | LocationsSectionSlice
-  | RsvpSectionSlice;
+  | RsvpSectionSlice
+  | GiftRegistrySectionSlice;
 /**
  * Page document from Prismic
  *
@@ -204,6 +205,62 @@ export type AllDocumentTypes =
   | MainMenuDocument
   | PageDocument
   | SiteConfigurationDocument;
+/**
+ * Primary content in GiftRegistrySection → Primary
+ *
+ */
+interface GiftRegistrySectionSliceDefaultPrimary {
+  /**
+   * Gift Registry Text field in *GiftRegistrySection → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: gift_registry_section.primary.giftRegistryText
+   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+   *
+   */
+  giftRegistryText: prismic.RichTextField;
+  /**
+   * GiftRegistryLink field in *GiftRegistrySection → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: gift_registry_section.primary.giftRegistryLink
+   * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+   *
+   */
+  giftRegistryLink: prismic.LinkField;
+}
+/**
+ * Default variation for GiftRegistrySection Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `Default`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type GiftRegistrySectionSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<GiftRegistrySectionSliceDefaultPrimary>,
+  never
+>;
+/**
+ * Slice variation for *GiftRegistrySection*
+ *
+ */
+type GiftRegistrySectionSliceVariation = GiftRegistrySectionSliceDefault;
+/**
+ * GiftRegistrySection Shared Slice
+ *
+ * - **API ID**: `gift_registry_section`
+ * - **Description**: `GiftRegistrySection`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type GiftRegistrySectionSlice = prismic.SharedSlice<
+  "gift_registry_section",
+  GiftRegistrySectionSliceVariation
+>;
 /**
  * Primary content in LandingSection → Primary
  *
@@ -486,6 +543,10 @@ declare module "@prismicio/client" {
       SiteConfigurationDocumentData,
       SiteConfigurationDocument,
       AllDocumentTypes,
+      GiftRegistrySectionSliceDefaultPrimary,
+      GiftRegistrySectionSliceDefault,
+      GiftRegistrySectionSliceVariation,
+      GiftRegistrySectionSlice,
       LandingSectionSliceDefaultPrimary,
       LandingSectionSliceDefault,
       LandingSectionSliceVariation,

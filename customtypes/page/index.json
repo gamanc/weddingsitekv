@@ -26,7 +26,8 @@
             "landing_section": { "type": "SharedSlice" },
             "welcome_section": { "type": "SharedSlice" },
             "locations_section": { "type": "SharedSlice" },
-            "rsvp_section": { "type": "SharedSlice" }
+            "rsvp_section": { "type": "SharedSlice" },
+            "gift_registry_section": { "type": "SharedSlice" }
           }
         }
       }

@@ -9,8 +9,10 @@
 					{
 						"type": "heading2",
 						"content": {
-							"text": "Entire"
-						}
+							"text": "",
+							"spans": []
+						},
+						"direction": "ltr"
 					}
 				]
 			}

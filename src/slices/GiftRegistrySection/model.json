@@ -1,0 +1,36 @@
+{
+  "id": "gift_registry_section",
+  "type": "SharedSlice",
+  "name": "GiftRegistrySection",
+  "description": "GiftRegistrySection",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "giftRegistryText": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Gift Registry Text",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "giftRegistryLink": {
+          "type": "Link",
+          "config": {
+            "label": "GiftRegistryLink",
+            "placeholder": "",
+            "select": null
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
