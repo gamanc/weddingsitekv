@@ -50,8 +50,8 @@ const Navbar = () => {
           <a className={styles.navLinks} href="#rsvp">
             RSVP
           </a>
-          <a className={styles.navLinks} href="#gift-registry">
-            Regalos
+          <a className={styles.navLinks} href="#presents">
+            Presentes
           </a>
         </li>
       </ul>
