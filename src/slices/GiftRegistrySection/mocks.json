@@ -20,6 +20,17 @@
 					"__TYPE__": "ExternalLink",
 					"url": "http://twitter.com"
 				}
+			},
+			"monetaryPresentText": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Aliquip enim ex do laboris anim do commodo est sunt occaecat."
+						}
+					}
+				]
 			}
 		},
 		"items": []

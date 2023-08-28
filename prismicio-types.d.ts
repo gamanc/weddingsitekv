@@ -211,6 +211,16 @@ export type AllDocumentTypes =
  */
 interface GiftRegistrySectionSliceDefaultPrimary {
   /**
+   * Monetary Present Text field in *GiftRegistrySection → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: gift_registry_section.primary.monetaryPresentText
+   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+   *
+   */
+  monetaryPresentText: prismic.RichTextField;
+  /**
    * Gift Registry Text field in *GiftRegistrySection → Primary*
    *
    * - **Field Type**: Rich Text
