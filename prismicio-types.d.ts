@@ -5,6 +5,23 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = {
   [KeyType in keyof T]: T[KeyType];
 };
+/** Content for ImageItem documents */
+type ImageitemDocumentData = Record<string, never>;
+/**
+ * ImageItem document from Prismic
+ *
+ * - **API ID**: `imageitem`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ImageitemDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<ImageitemDocumentData>,
+    "imageitem",
+    Lang
+  >;
 /** Content for MainMenu documents */
 interface MainMenuDocumentData {
   /**
@@ -160,7 +177,8 @@ type PageDocumentDataSlicesSlice =
   | WelcomeSectionSlice
   | LocationsSectionSlice
   | RsvpSectionSlice
-  | GiftRegistrySectionSlice;
+  | GiftRegistrySectionSlice
+  | GallerySectionSlice;
 /**
  * Page document from Prismic
  *
@@ -202,9 +220,66 @@ export type SiteConfigurationDocument<Lang extends string = string> =
     Lang
   >;
 export type AllDocumentTypes =
+  | ImageitemDocument
   | MainMenuDocument
   | PageDocument
   | SiteConfigurationDocument;
+/**
+ * Item in GallerySection → Items
+ *
+ */
+export interface GallerySectionSliceDefaultItem {
+  /**
+   * Label field in *GallerySection → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: gallery_section.items[].label
+   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   *
+   */
+  label: prismic.KeyTextField;
+  /**
+   * Image field in *GallerySection → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: gallery_section.items[].image
+   * - **Documentation**: https://prismic.io/docs/core-concepts/image
+   *
+   */
+  image: prismic.ImageField<never>;
+}
+/**
+ * Default variation for GallerySection Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `Default`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type GallerySectionSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Record<string, never>,
+  Simplify<GallerySectionSliceDefaultItem>
+>;
+/**
+ * Slice variation for *GallerySection*
+ *
+ */
+type GallerySectionSliceVariation = GallerySectionSliceDefault;
+/**
+ * GallerySection Shared Slice
+ *
+ * - **API ID**: `gallery_section`
+ * - **Description**: `GallerySection`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type GallerySectionSlice = prismic.SharedSlice<
+  "gallery_section",
+  GallerySectionSliceVariation
+>;
 /**
  * Primary content in GiftRegistrySection → Primary
  *
@@ -544,6 +619,8 @@ declare module "@prismicio/client" {
   }
   namespace Content {
     export type {
+      ImageitemDocumentData,
+      ImageitemDocument,
       MainMenuDocumentData,
       MainMenuDocumentDataLinksItem,
       MainMenuDocument,
@@ -553,6 +630,10 @@ declare module "@prismicio/client" {
       SiteConfigurationDocumentData,
       SiteConfigurationDocument,
       AllDocumentTypes,
+      GallerySectionSliceDefaultItem,
+      GallerySectionSliceDefault,
+      GallerySectionSliceVariation,
+      GallerySectionSlice,
       GiftRegistrySectionSliceDefaultPrimary,
       GiftRegistrySectionSliceDefault,
       GiftRegistrySectionSliceVariation,
