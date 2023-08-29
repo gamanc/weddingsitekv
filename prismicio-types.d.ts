@@ -22,83 +22,6 @@ export type ImageitemDocument<Lang extends string = string> =
     "imageitem",
     Lang
   >;
-/** Content for MainMenu documents */
-interface MainMenuDocumentData {
-  /**
-   * Logo field in *MainMenu*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: mainMenu.logo
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/core-concepts/image
-   *
-   */
-  logo: prismic.ImageField<never>;
-  /**
-   * Links field in *MainMenu*
-   *
-   * - **Field Type**: Group
-   * - **Placeholder**: *None*
-   * - **API ID Path**: mainMenu.links[]
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/core-concepts/group
-   *
-   */
-  links: prismic.GroupField<Simplify<MainMenuDocumentDataLinksItem>>;
-  /**
-   * Background Color field in *MainMenu*
-   *
-   * - **Field Type**: Color
-   * - **Placeholder**: *None*
-   * - **API ID Path**: mainMenu.backgroundColor
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/core-concepts/color
-   *
-   */
-  backgroundColor: prismic.ColorField;
-}
-/**
- * Item in MainMenu → Links
- *
- */
-export interface MainMenuDocumentDataLinksItem {
-  /**
-   * Label field in *MainMenu → Links*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: mainMenu.links[].label
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
-   */
-  label: prismic.KeyTextField;
-  /**
-   * link field in *MainMenu → Links*
-   *
-   * - **Field Type**: Link
-   * - **Placeholder**: *None*
-   * - **API ID Path**: mainMenu.links[].link
-   * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
-   *
-   */
-  link: prismic.LinkField;
-}
-/**
- * MainMenu document from Prismic
- *
- * - **API ID**: `mainMenu`
- * - **Repeatable**: `false`
- * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
- *
- * @typeParam Lang - Language API ID of the document.
- */
-export type MainMenuDocument<Lang extends string = string> =
-  prismic.PrismicDocumentWithUID<
-    Simplify<MainMenuDocumentData>,
-    "mainMenu",
-    Lang
-  >;
 /** Content for Page documents */
 interface PageDocumentData {
   /**
@@ -221,7 +144,6 @@ export type SiteConfigurationDocument<Lang extends string = string> =
   >;
 export type AllDocumentTypes =
   | ImageitemDocument
-  | MainMenuDocument
   | PageDocument
   | SiteConfigurationDocument;
 /**
@@ -621,9 +543,6 @@ declare module "@prismicio/client" {
     export type {
       ImageitemDocumentData,
       ImageitemDocument,
-      MainMenuDocumentData,
-      MainMenuDocumentDataLinksItem,
-      MainMenuDocument,
       PageDocumentData,
       PageDocumentDataSlicesSlice,
       PageDocument,
