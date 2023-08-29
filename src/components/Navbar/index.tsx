@@ -5,8 +5,13 @@ import useOutsideClick from "../../hooks/useOutsideClick";
 import { DMSerifDisplay } from "@/app/fonts";
 import styles from "./Navbar.module.scss";
 import clsx from "clsx";
+import { MenuItem } from "@/constants/MenuItems";
 
-const Navbar = () => {
+interface Props {
+  menuItems: MenuItem[];
+}
+
+const Navbar = ({ menuItems }: Props) => {
   const [clicked, setClicked] = useState(false);
   const hamburguerButton = useRef<HTMLDivElement>(null);
 
@@ -42,18 +47,11 @@ const Navbar = () => {
         className={clsx(styles.navMenu, { [styles.active]: clicked })}
       >
         <li>
-          <a className={styles.navLinks} href="#start">
-            Inicio
-          </a>
-          <a className={styles.navLinks} href="#reception">
-            Recepción
-          </a>
-          <a className={styles.navLinks} href="#rsvp">
-            RSVP
-          </a>
-          <a className={styles.navLinks} href="#presents">
-            Presentes
-          </a>
+          {menuItems.map((item) => (
+            <a className={styles.navLinks} href={item.anchorTag}>
+              {item.label}
+            </a>
+          ))}
         </li>
       </ul>
     </nav>

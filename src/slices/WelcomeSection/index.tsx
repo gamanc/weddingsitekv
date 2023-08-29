@@ -33,7 +33,7 @@ const WelcomeSection = ({ slice }: WelcomeSectionProps): JSX.Element => {
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
       className={clsx("full-screen", styles.container)}
-      id="start"
+      id="welcome"
     >
       <div className={styles.content}>
         <span className={styles.welcomeText}>{welcomeText}</span>

@@ -20,6 +20,7 @@ const GallerySection = ({ slice }: GallerySectionProps): JSX.Element => {
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
       className={styles.container}
+      id="gallery"
     >
       <div className={styles.imageGrid}>
         {slice.items.map((imageItem, index) => (
@@ -31,7 +32,10 @@ const GallerySection = ({ slice }: GallerySectionProps): JSX.Element => {
               [styles.overlap]: index > 0,
             })}
           >
-            <PrismicNextImage field={imageItem.image} />
+            <PrismicNextImage
+              field={imageItem.image}
+              className="block-touch-callout"
+            />
             <span className={styles.label}>{imageItem.label}</span>
           </div>
         ))}

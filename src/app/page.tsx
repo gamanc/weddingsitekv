@@ -4,6 +4,7 @@ import { Metadata, ResolvingMetadata } from "next";
 import { SliceZone } from "@prismicio/react";
 import { components } from "../slices";
 import Navbar from "@/components/Navbar";
+import { AnchorTag } from "@/constants/MenuItems";
 
 type Props = {
   params: { id: string };
@@ -18,9 +19,15 @@ export default async function Home({ params, searchParams }: Props) {
     data: { slices },
   } = page;
 
+  const menuItems = slices
+    .filter((slice) => slice.slice_type !== "landing_section")
+    .map((slice) => AnchorTag[slice.slice_type]);
+
+  console.log(menuItems);
+
   return (
     <>
-      <Navbar />
+      <Navbar menuItems={menuItems} />
       <main className={styles.main}>
         <SliceZone slices={slices} components={components} />
       </main>
