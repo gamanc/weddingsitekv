@@ -117,13 +117,11 @@
 }
 
 .navMenu {
-  display: grid;
-  grid-template-columns: repeat(3, auto);
+  display: flex;
   grid-gap: 10px;
   list-style: none;
   text-align: center;
   justify-content: end;
-  margin-right: 2rem;
   padding-inline-start: 0;
 }
 
