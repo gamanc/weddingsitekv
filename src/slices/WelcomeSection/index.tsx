@@ -3,12 +3,12 @@ import { useEffect, useState } from "react";
 import { Content, asDate } from "@prismicio/client";
 import { createClient } from "@/prismicio";
 import { SliceComponentProps, usePrismicClient } from "@prismicio/react";
+import clsx from "clsx";
 
 import FloralOrnament from "@/components/FloralOrnament";
-import styles from "./styles.module.scss";
-import clsx from "clsx";
 import Countdown from "@/components/Countdown";
 import DividerOrnament from "@/components/DividerOrnament";
+import styles from "./styles.module.scss";
 
 export type WelcomeSectionProps =
   SliceComponentProps<Content.WelcomeSectionSlice>;

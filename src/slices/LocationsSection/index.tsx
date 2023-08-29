@@ -1,6 +1,6 @@
 import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
-import { cinzel, DMSans } from "@/app/fonts";
+import { cinzel, DMSans, DMSerifDisplay } from "@/app/fonts";
 import { ExternalLink as ExternalLinkIcon } from "react-feather";
 import clsx from "clsx";
 
@@ -39,7 +39,9 @@ const LocationsSection = ({ slice }: LocationsSectionProps): JSX.Element => {
           <span className={clsx(styles.eyebrowText, cinzel.className)}>
             Ceremonia
           </span>
-          <h1 className={styles.locationTitle}>{ceremonyLocationName}</h1>
+          <h1 className={clsx(styles.locationTitle, DMSerifDisplay.className)}>
+            {ceremonyLocationName}
+          </h1>
           <div className={styles.line} />
           <PrismicNextLink
             className={clsx(styles.locationAddressLink, DMSans.className)}
@@ -61,7 +63,9 @@ const LocationsSection = ({ slice }: LocationsSectionProps): JSX.Element => {
           <span className={clsx(styles.eyebrowText, cinzel.className)}>
             Recepción
           </span>
-          <h1 className={styles.locationTitle}>{receptionLocationName}</h1>
+          <h1 className={clsx(styles.locationTitle, DMSerifDisplay.className)}>
+            {receptionLocationName}
+          </h1>
           <div className={styles.line} />
           <PrismicNextLink
             className={clsx(styles.locationAddressLink, DMSans.className)}

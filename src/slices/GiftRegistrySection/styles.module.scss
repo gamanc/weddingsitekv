@@ -86,21 +86,20 @@
 .ornament {
   position: absolute;
   object-fit: contain;
-  transform: rotate(-90deg) scaleX(-1);
   z-index: 1;
 
   @include for-extra-small-devices {
-    position: absolute;
+    transform: none;
     width: 100%;
     height: auto;
     min-height: 400px;
     max-height: 500px;
-    top: 2em;
-    left: -70%;
+    top: -10rem;
+    left: -80%;
   }
 
   @include for-small-devices {
-    top: 5em;
+    top: -14em;
     left: -22em;
     height: 50vh;
     min-height: 500px;
@@ -112,7 +111,7 @@
     height: 50vh;
     min-height: 600px;
     max-height: 800px;
-    top: 5rem;
+    top: -10rem;
     left: -27em;
     width: auto;
   }
@@ -122,8 +121,8 @@
     height: 60vh;
     min-height: 600px;
     max-height: 800px;
-    top: 5rem;
-    left: -20em;
+    top: -10rem;
+    left: -25em;
     width: auto;
   }
 }

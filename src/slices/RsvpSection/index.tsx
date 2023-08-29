@@ -88,7 +88,7 @@ const RsvpSection = ({ slice }: RsvpSectionProps): JSX.Element => {
         )}
         {!loading && guestInfo?.willAttend === "noresponse" && (
           <div className={clsx(styles.formContent, getContentFadeClassNames())}>
-            <p className={DMSerifDisplay.className}>
+            <p>
               Tenemos el agrado de
               {guestInfo.adults + guestInfo.kids > 1
                 ? " invitarlos "

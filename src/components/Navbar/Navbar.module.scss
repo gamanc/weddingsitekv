@@ -146,15 +146,16 @@
   .navMenu {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     width: 100%;
-    height: max-content;
+    height: calc(100vh - 80px);
     position: absolute;
     top: 80px;
     left: -100%;
     opacity: 1;
     transition: all 0.5s ease;
     &.active {
-      background-color: $color-beige-strong;
+      background-color: rgba($color-beige-strong, 0.9);
       left: 0;
       opacity: 1;
       transition: all 0.5s ease;
@@ -164,12 +165,13 @@
 
   .navLinks {
     text-align: center;
-    padding: 2rem;
+    padding: 3rem;
     width: 100%;
     display: table;
+    font-size: 1.4em;
 
     &:hover {
-      background-color: $color-beige-soft;
+      background-color: darken($color-beige-soft, 2%);
       border-radius: 0;
       cursor: pointer;
     }

@@ -1,7 +1,7 @@
 import "./globals.scss";
 import { PrismicPreview } from "@prismicio/next";
 import { repositoryName } from "@/prismicio";
-import { DMSerifText } from "./fonts";
+import { DMSans } from "./fonts";
 
 export default function RootLayout({
   children,
@@ -10,7 +10,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={DMSerifText.className}>
+      <body className={DMSans.className}>
         {children}
         <PrismicPreview repositoryName={repositoryName} />
       </body>

@@ -41,8 +41,8 @@
     height: auto;
     min-height: 400px;
     max-height: 500px;
-    top: 1em;
-    left: -70%;
+    top: 0;
+    left: -75%;
   }
 
   @include for-small-devices {

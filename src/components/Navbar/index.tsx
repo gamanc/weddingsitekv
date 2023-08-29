@@ -2,6 +2,7 @@
 
 import { memo, useState, useRef } from "react";
 import useOutsideClick from "../../hooks/useOutsideClick";
+import { DMSerifDisplay } from "@/app/fonts";
 import styles from "./Navbar.module.scss";
 import clsx from "clsx";
 
@@ -16,7 +17,7 @@ const Navbar = () => {
   useOutsideClick(hamburguerButton, () => setClicked(false));
 
   return (
-    <nav className={styles.navbar}>
+    <nav className={clsx(styles.navbar, DMSerifDisplay.className)}>
       <a
         className={styles.navbarLogo}
         style={{ textDecoration: "none" }}

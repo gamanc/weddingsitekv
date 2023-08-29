@@ -1,5 +1,6 @@
 import { Content } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
+import { DMSans } from "@/app/fonts";
 import clsx from "clsx";
 
 import styles from "./styles.module.scss";
@@ -32,15 +33,15 @@ const GiftRegistrySection = ({
       className={styles.container}
       id="presents"
     >
-      <div className={styles.content}>
+      <div className={clsx(styles.content, DMSans.className)}>
         <div className={styles.texts}>
-          <EnvelopeIcon size={60} color="#9e6633" />
+          <EnvelopeIcon size={60} color="#a0550f" />
           <PrismicRichText field={monetaryPresentText} />
           <DividerOrnament />
         </div>
 
         <div className={styles.texts}>
-          <Gift size={60} color="#9e6633" />
+          <Gift size={60} color="#a0550f" />
           <PrismicRichText field={giftRegistryText} />
           <PrismicNextLink
             target="_blank"
