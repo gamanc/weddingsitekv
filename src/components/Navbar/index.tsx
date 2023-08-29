@@ -48,7 +48,11 @@ const Navbar = ({ menuItems }: Props) => {
       >
         <li>
           {menuItems.map((item) => (
-            <a className={styles.navLinks} href={item.anchorTag}>
+            <a
+              key={item.anchorTag}
+              className={styles.navLinks}
+              href={item.anchorTag}
+            >
               {item.label}
             </a>
           ))}
