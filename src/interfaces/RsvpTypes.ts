@@ -1,5 +1,7 @@
 export type AttendOptions = "noresponse" | "yes" | "no";
 
+export type DisplayGiftRegistryOptions = "yes" | "no";
+
 export type GuestInfo = {
   name: string;
   willAttend: AttendOptions;
@@ -7,6 +9,7 @@ export type GuestInfo = {
   kids: number;
   confirmedAdults: number;
   confirmedKids: number;
+  shouldDisplayGiftRegistry: DisplayGiftRegistryOptions;
 };
 
 export interface RSVPFormData {

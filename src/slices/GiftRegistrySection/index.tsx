@@ -1,4 +1,5 @@
-import { Content } from "@prismicio/client";
+"use client";
+import { Content, asText } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { DMSans } from "@/app/fonts";
 import clsx from "clsx";
@@ -11,6 +12,9 @@ import { ExternalLink as ExternalLinkIcon, Gift } from "react-feather";
 
 import Image from "next/image";
 import EnvelopeIcon from "@/icons/Envelope";
+import useGuestInfo from "@/hooks/useGuestInfo";
+import { useEffect, useMemo, useState } from "react";
+import { useSearchParams } from "next/navigation";
 
 /**
  * Props for `GiftRegistrySection`.
@@ -24,6 +28,21 @@ export type GiftRegistrySectionProps =
 const GiftRegistrySection = ({
   slice,
 }: GiftRegistrySectionProps): JSX.Element => {
+  const { loading, guestInfo, fetchGuestInfo } = useGuestInfo();
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    const key = searchParams.get("key");
+    fetchGuestInfo(key || "");
+  }, []);
+
+  const shouldDisplayGiftRegistry = useMemo(
+    () => !loading && guestInfo?.shouldDisplayGiftRegistry === "yes",
+    [loading, guestInfo]
+  );
+
+  console.log({ shouldDisplayGiftRegistry });
+
   const { monetaryPresentText, giftRegistryText, giftRegistryLink } =
     slice.primary;
   return (
@@ -36,33 +55,41 @@ const GiftRegistrySection = ({
       <div className={clsx(styles.content, DMSans.className)}>
         <div className={styles.texts}>
           <EnvelopeIcon size={60} color="#a0550f" />
-          <PrismicRichText field={monetaryPresentText} />
+          <span
+            className={clsx({
+              [styles.largeText]: !shouldDisplayGiftRegistry,
+            })}
+          >
+            {asText(monetaryPresentText)}
+          </span>
           <DividerOrnament />
         </div>
 
-        <div className={styles.texts}>
-          <Gift size={60} color="#a0550f" />
-          <PrismicRichText field={giftRegistryText} />
-          <PrismicNextLink
-            target="_blank"
-            field={giftRegistryLink}
-            className={styles.giftRegistryLink}
-          >
-            <Image
-              width={1080}
-              height={271}
-              draggable={false}
-              priority
-              className={styles.giftRegistryLogo}
-              src="/img/siman-logo.png"
-              alt="Siman logo"
-            />
-            <span>
-              Visitar mesa de regalos
-              <ExternalLinkIcon size={20} color="#9e6633" />
-            </span>
-          </PrismicNextLink>
-        </div>
+        {shouldDisplayGiftRegistry && (
+          <div className={styles.texts}>
+            <Gift size={60} color="#a0550f" />
+            <span>{asText(giftRegistryText)}</span>
+            <PrismicNextLink
+              target="_blank"
+              field={giftRegistryLink}
+              className={styles.giftRegistryLink}
+            >
+              <Image
+                width={1080}
+                height={271}
+                draggable={false}
+                priority
+                className={styles.giftRegistryLogo}
+                src="/img/siman-logo.png"
+                alt="Siman logo"
+              />
+              <span>
+                Visitar mesa de regalos
+                <ExternalLinkIcon size={20} color="#9e6633" />
+              </span>
+            </PrismicNextLink>
+          </div>
+        )}
       </div>
       <FloralOrnament className={styles.ornament} />
     </section>

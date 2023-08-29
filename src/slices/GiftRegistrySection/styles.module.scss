@@ -32,6 +32,8 @@
 }
 
 .texts {
+  display: flex;
+  flex-direction: column;
   text-align: center;
   color: $color-text-primary;
   align-items: center;
@@ -48,6 +50,13 @@
 
   svg {
     margin: 1em 0;
+  }
+}
+
+.largeText {
+  font-size: 1.3rem;
+  @include for-extra-small-devices {
+    font-size: 1.2rem;
   }
 }
 
