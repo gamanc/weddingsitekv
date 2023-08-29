@@ -1,0 +1,211 @@
+@import "@/styles/colors";
+@import "@/styles/mixins";
+
+.container {
+  display: flex;
+  transition: all 0.4s;
+  width: 100%;
+  position: relative;
+  padding: 5rem 0 2rem 0;
+  height: fit-content;
+  min-height: 100vh;
+}
+
+.imageGrid {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  padding: 4rem 4rem;
+  user-select: none;
+  //   border: 1px solid green;
+
+  @include for-extra-small-devices {
+    padding: 4rem 0;
+    // border: 1px solid blue;
+  }
+
+  @include for-extra-large-devices {
+    padding: 4rem 8rem;
+    // border: 1px solid red;
+  }
+}
+
+.imageContainer {
+  position: relative;
+  width: 100%;
+}
+
+$image-width: 55%;
+
+.overlap {
+  margin-top: -1rem;
+}
+
+.left {
+  img {
+    width: $image-width;
+    left: 0;
+    height: auto;
+    object-fit: cover;
+    position: relative;
+    z-index: 2;
+  }
+
+  .label {
+    position: absolute;
+    top: 1.5rem;
+    left: calc($image-width + 1rem);
+    padding: 5px 0px;
+    color: lighten($color-text-primary, 30%);
+    font-size: medium;
+    z-index: 1;
+  }
+}
+
+.right {
+  img {
+    float: right;
+    width: $image-width;
+    right: 0;
+    height: auto;
+    object-fit: cover;
+    position: relative;
+    z-index: 2;
+  }
+
+  .label {
+    position: absolute;
+    top: 1.5rem;
+    right: calc($image-width + 1rem);
+    padding: 5px 0px;
+    color: lighten($color-text-primary, 30%);
+    font-size: medium;
+    z-index: 1;
+  }
+}
+
+.topOrnament {
+  position: absolute;
+  object-fit: contain;
+  z-index: 0;
+
+  @include for-extra-small-devices {
+    width: 100%;
+    height: auto;
+    min-height: 400px;
+    max-height: 500px;
+    top: 1em;
+    right: -70%;
+  }
+
+  @include for-small-devices {
+    top: 5em;
+    right: -22em;
+    height: 50vh;
+    min-height: 500px;
+    max-height: 700px;
+    width: auto;
+  }
+
+  @include for-large-devices {
+    height: 50vh;
+    min-height: 600px;
+    max-height: 800px;
+    top: 5rem;
+    right: -27em;
+    width: auto;
+  }
+
+  @include for-extra-large-devices {
+    height: 60vh;
+    min-height: 600px;
+    max-height: 800px;
+    top: 5rem;
+    right: -19em;
+    width: auto;
+  }
+}
+
+.bottomOrnament {
+  position: absolute;
+  object-fit: contain;
+  z-index: 0;
+
+  @include for-extra-small-devices {
+    width: 100%;
+    height: auto;
+    min-height: 400px;
+    max-height: 500px;
+    bottom: -10em;
+    right: -70%;
+  }
+
+  @include for-small-devices {
+    bottom: -5em;
+    right: -22em;
+    height: 50vh;
+    min-height: 500px;
+    max-height: 700px;
+    width: auto;
+  }
+
+  @include for-large-devices {
+    height: 50vh;
+    min-height: 600px;
+    max-height: 800px;
+    bottom: -5rem;
+    right: -27em;
+    width: auto;
+  }
+
+  @include for-extra-large-devices {
+    height: 60vh;
+    min-height: 600px;
+    max-height: 800px;
+    bottom: -5rem;
+    right: -19em;
+    width: auto;
+  }
+}
+
+.bottomLeftOrnament {
+  position: absolute;
+  object-fit: contain;
+  z-index: 0;
+
+  @include for-extra-small-devices {
+    width: 100%;
+    height: auto;
+    min-height: 400px;
+    max-height: 500px;
+    bottom: -10em;
+    left: -70%;
+  }
+
+  @include for-small-devices {
+    bottom: -5em;
+    right: -22em;
+    height: 50vh;
+    min-height: 500px;
+    max-height: 700px;
+    left: auto;
+  }
+
+  @include for-large-devices {
+    height: 50vh;
+    min-height: 600px;
+    max-height: 800px;
+    bottom: -5rem;
+    left: -27em;
+    width: auto;
+  }
+
+  @include for-extra-large-devices {
+    height: 60vh;
+    min-height: 600px;
+    max-height: 800px;
+    bottom: -5rem;
+    left: -19em;
+    width: auto;
+  }
+}
