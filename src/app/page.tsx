@@ -1,5 +1,5 @@
 import { createClient } from "@/prismicio";
-import styles from "./page.module.css";
+import styles from "./page.module.scss";
 import { Metadata, ResolvingMetadata } from "next";
 import { SliceZone } from "@prismicio/react";
 import { components } from "../slices";
@@ -22,8 +22,6 @@ export default async function Home({ params, searchParams }: Props) {
   const menuItems = slices
     .filter((slice) => slice.slice_type !== "landing_section")
     .map((slice) => AnchorTag[slice.slice_type]);
-
-  console.log(menuItems);
 
   return (
     <>
@@ -57,6 +55,6 @@ export async function generateMetadata(
         },
       ],
     },
-    themeColor: "#fee8e3",
+    themeColor: styles.themeColor,
   };
 }
