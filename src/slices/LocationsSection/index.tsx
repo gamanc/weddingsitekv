@@ -1,7 +1,7 @@
 import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
 import { cinzel, DMSans, DMSerifDisplay } from "@/app/fonts";
-import { ExternalLink as ExternalLinkIcon } from "react-feather";
+import { MapPin as MapPinIcon } from "react-feather";
 import clsx from "clsx";
 
 import styles from "./styles.module.scss";
@@ -49,7 +49,7 @@ const LocationsSection = ({ slice }: LocationsSectionProps): JSX.Element => {
             field={ceremonyLocationLink}
           >
             {ceremonyLocationAddress}
-            <ExternalLinkIcon size={20} color="#9e6633" />
+            <MapPinIcon size={20} color="#9e6633" />
           </PrismicNextLink>
         </div>
 
@@ -73,7 +73,7 @@ const LocationsSection = ({ slice }: LocationsSectionProps): JSX.Element => {
             field={receptionLocationLink}
           >
             {receptionLocationAddress}
-            <ExternalLinkIcon size={20} color="#9e6633" />
+            <MapPinIcon size={20} color="#9e6633" />
           </PrismicNextLink>
         </div>
       </div>
