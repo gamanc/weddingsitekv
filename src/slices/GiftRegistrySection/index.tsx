@@ -54,7 +54,7 @@ const GiftRegistrySection = ({
     >
       <div className={clsx(styles.content, DMSans.className)}>
         <div className={styles.texts}>
-          <EnvelopeIcon size={60} color="#a0550f" />
+          <EnvelopeIcon size={60} color={styles.fontColor} />
           <span
             className={clsx({
               [styles.largeText]: !shouldDisplayGiftRegistry,
@@ -67,7 +67,7 @@ const GiftRegistrySection = ({
 
         {shouldDisplayGiftRegistry && (
           <div className={styles.texts}>
-            <Gift size={60} color="#a0550f" />
+            <Gift size={60} color={styles.fontColor} />
             <span>{asText(giftRegistryText)}</span>
             <PrismicNextLink
               target="_blank"

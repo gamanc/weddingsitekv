@@ -1,6 +1,10 @@
 @import "@/styles/colors";
 @import "@/styles/mixins";
 
+:export {
+  fontColor: $color-text-primary;
+}
+
 .container {
   width: 100%;
   overflow: hidden;

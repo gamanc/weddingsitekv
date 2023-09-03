@@ -1,6 +1,10 @@
 @import "@/styles/colors";
 @import "@/styles/mixins";
 
+:export {
+  fontColor: $color-text-primary;
+}
+
 .container {
   background-color: $color-beige-soft;
   transition: all 0.4s;
@@ -68,7 +72,7 @@
 
 .line {
   height: 1px;
-  background-color: $color-brown;
+  background-color: $color-beige-soft;
   width: 25%;
   margin: 1rem 0;
 }

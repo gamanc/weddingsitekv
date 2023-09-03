@@ -49,7 +49,7 @@ const LocationsSection = ({ slice }: LocationsSectionProps): JSX.Element => {
             field={ceremonyLocationLink}
           >
             {ceremonyLocationAddress}
-            <MapPinIcon size={20} color="#9e6633" />
+            <MapPinIcon size={20} color={styles.fontColor} />
           </PrismicNextLink>
         </div>
 
@@ -73,7 +73,7 @@ const LocationsSection = ({ slice }: LocationsSectionProps): JSX.Element => {
             field={receptionLocationLink}
           >
             {receptionLocationAddress}
-            <MapPinIcon size={20} color="#9e6633" />
+            <MapPinIcon size={20} color={styles.fontColor} />
           </PrismicNextLink>
         </div>
       </div>
