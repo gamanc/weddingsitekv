@@ -11,3 +11,7 @@
     max-width: 600px;
   }
 }
+
+.blueFilter {
+  filter: sepia(100%) hue-rotate(100deg) saturate(150%);
+}
