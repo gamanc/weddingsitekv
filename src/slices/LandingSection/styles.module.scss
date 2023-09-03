@@ -8,7 +8,7 @@
 
 .line {
   height: 1px;
-  background-color: $color-brown;
+  background-color: lighten($color-text-primary, 10%);
   width: 1.5rem;
   &.leftLine {
     position: absolute;
@@ -56,7 +56,7 @@
 }
 
 .connector {
-  color: #ffd0c8;
+  color: lighten($color-text-primary, 50%);
   font-size: 5rem;
   margin: 0;
   padding: 0;

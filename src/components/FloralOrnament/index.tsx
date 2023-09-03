@@ -28,7 +28,7 @@ const FloralOrnament = ({
         },
         "block-touch-callout"
       )}
-      src="/img/floral-ornament-hd.png"
+      src="/img/floral-ornament-hd-1.png"
       alt="ornament"
     />
   );

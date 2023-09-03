@@ -1,18 +1,10 @@
+@import "@/styles/colors";
+
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
   font-size: calc(15px + 0.390625vw);
-}
-// --color-beige-soft: #fff6f4;
-// --color-beige-strong: #ffeeea;
-//--color-text-primary: #9e6633;
-
-:root {
-  --color-beige-soft: #fff6f4;
-  --color-beige-strong: #fff9f8;
-  --color-brown: #9e6633;
-  --color-text-primary: #9e6633;
 }
 
 html,
@@ -25,11 +17,11 @@ body {
 main {
   /* Apply alternating colors using :nth-child selectors */
   section:nth-child(odd) {
-    background-color: var(--color-beige-soft);
+    background-color: $color-beige-soft;
   }
 
   section:nth-child(even) {
-    background-color: var(--color-beige-strong);
+    background-color: $color-beige-strong;
   }
 }
 
