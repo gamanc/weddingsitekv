@@ -73,3 +73,7 @@ a {
     opacity: 1;
   }
 }
+
+.blue-filter {
+  filter: sepia(100%) hue-rotate(100deg) saturate(150%);
+}

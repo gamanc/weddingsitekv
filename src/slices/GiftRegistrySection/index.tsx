@@ -79,7 +79,7 @@ const GiftRegistrySection = ({
                 height={271}
                 draggable={false}
                 priority
-                className={styles.giftRegistryLogo}
+                className={clsx("blue-filter", styles.giftRegistryLogo)}
                 src="/img/siman-logo.png"
                 alt="Siman logo"
               />

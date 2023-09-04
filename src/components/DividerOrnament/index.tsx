@@ -7,8 +7,8 @@ const DividerOrnament = () => {
     <Image
       className={clsx(
         "block-touch-callout",
-        styles.dividerOrnament,
-        styles.blueFilter
+        "blue-filter",
+        styles.dividerOrnament
       )}
       src="/img/divider-ornament.png"
       width={1107}
