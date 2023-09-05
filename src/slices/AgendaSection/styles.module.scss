@@ -1,0 +1,13 @@
+@import "@/styles/colors";
+@import "@/styles/mixins";
+
+.container {
+  display: flex;
+  transition: all 0.4s;
+  width: 100%;
+  position: relative;
+  padding: 5rem 0 2rem 0;
+  height: fit-content;
+  min-height: 100vh;
+  user-select: none;
+}

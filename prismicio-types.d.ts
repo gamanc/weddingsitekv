@@ -101,7 +101,8 @@ type PageDocumentDataSlicesSlice =
   | LocationsSectionSlice
   | RsvpSectionSlice
   | GiftRegistrySectionSlice
-  | GallerySectionSlice;
+  | GallerySectionSlice
+  | AgendaSectionSlice;
 /**
  * Page document from Prismic
  *
@@ -146,6 +147,113 @@ export type AllDocumentTypes =
   | ImageitemDocument
   | PageDocument
   | SiteConfigurationDocument;
+/**
+ * Primary content in AgendaSection → Primary
+ *
+ */
+interface AgendaSectionSliceDefaultPrimary {
+  /**
+   * Attire Text field in *AgendaSection → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: agenda_section.primary.attireText
+   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+   *
+   */
+  attireText: prismic.RichTextField;
+}
+/**
+ * Item in AgendaSection → Items
+ *
+ */
+export interface AgendaSectionSliceDefaultItem {
+  /**
+   * Hour field in *AgendaSection → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: agenda_section.items[].hour
+   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   *
+   */
+  hour: prismic.KeyTextField;
+  /**
+   * Title field in *AgendaSection → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: agenda_section.items[].title
+   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   *
+   */
+  title: prismic.KeyTextField;
+  /**
+   * Subtitle field in *AgendaSection → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: agenda_section.items[].subtitle
+   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   *
+   */
+  subtitle: prismic.KeyTextField;
+  /**
+   * Icon field in *AgendaSection → Items*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: agenda_section.items[].icon
+   * - **Documentation**: https://prismic.io/docs/core-concepts/select
+   *
+   */
+  icon: prismic.SelectField<
+    | "cake"
+    | "calendar"
+    | "ceremony"
+    | "church"
+    | "dance"
+    | "dinner"
+    | "disco-ball"
+    | "drink"
+    | "margarita"
+    | "music"
+    | "party"
+    | "rings"
+    | "rings-2"
+    | "rings-heart"
+  >;
+}
+/**
+ * Default variation for AgendaSection Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `Default`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type AgendaSectionSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<AgendaSectionSliceDefaultPrimary>,
+  Simplify<AgendaSectionSliceDefaultItem>
+>;
+/**
+ * Slice variation for *AgendaSection*
+ *
+ */
+type AgendaSectionSliceVariation = AgendaSectionSliceDefault;
+/**
+ * AgendaSection Shared Slice
+ *
+ * - **API ID**: `agenda_section`
+ * - **Description**: `AgendaSection`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type AgendaSectionSlice = prismic.SharedSlice<
+  "agenda_section",
+  AgendaSectionSliceVariation
+>;
 /**
  * Item in GallerySection → Items
  *
@@ -549,6 +657,11 @@ declare module "@prismicio/client" {
       SiteConfigurationDocumentData,
       SiteConfigurationDocument,
       AllDocumentTypes,
+      AgendaSectionSliceDefaultPrimary,
+      AgendaSectionSliceDefaultItem,
+      AgendaSectionSliceDefault,
+      AgendaSectionSliceVariation,
+      AgendaSectionSlice,
       GallerySectionSliceDefaultItem,
       GallerySectionSliceDefault,
       GallerySectionSliceVariation,

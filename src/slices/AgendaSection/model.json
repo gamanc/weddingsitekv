@@ -1,0 +1,64 @@
+{
+  "id": "agenda_section",
+  "type": "SharedSlice",
+  "name": "AgendaSection",
+  "description": "AgendaSection",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "attireText": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Attire Text",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        }
+      },
+      "items": {
+        "hour": {
+          "type": "Text",
+          "config": { "label": "Hour", "placeholder": "" }
+        },
+        "title": {
+          "type": "Text",
+          "config": { "label": "Title", "placeholder": "" }
+        },
+        "subtitle": {
+          "type": "Text",
+          "config": { "label": "Subtitle", "placeholder": "" }
+        },
+        "icon": {
+          "type": "Select",
+          "config": {
+            "label": "Icon",
+            "placeholder": "",
+            "options": [
+              "cake",
+              "calendar",
+              "ceremony",
+              "church",
+              "dance",
+              "dinner",
+              "disco-ball",
+              "drink",
+              "margarita",
+              "music",
+              "party",
+              "rings",
+              "rings-2",
+              "rings-heart"
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

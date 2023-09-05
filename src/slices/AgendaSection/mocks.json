@@ -1,0 +1,58 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"attireText": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Irure duis eiusmod deserunt ex reprehenderit adipisicing minim commodo ea magna irure nostrud proident consequat."
+						}
+					}
+				]
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": [
+					[
+						"hour",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "milk",
+							"type": "Text"
+						}
+					],
+					[
+						"title",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "dried",
+							"type": "Text"
+						}
+					],
+					[
+						"subtitle",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "saddle",
+							"type": "Text"
+						}
+					],
+					[
+						"icon",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "rings-2",
+							"type": "Select"
+						}
+					]
+				]
+			}
+		]
+	}
+]

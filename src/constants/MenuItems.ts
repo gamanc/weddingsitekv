@@ -4,7 +4,8 @@ type SliceType =
   | "locations_section"
   | "rsvp_section"
   | "gift_registry_section"
-  | "gallery_section";
+  | "gallery_section"
+  | "agenda_section";
 
 export interface MenuItem {
   label: string;
@@ -22,4 +23,5 @@ export const AnchorTag: AnchorTagMap = {
   rsvp_section: { label: "RSVP", anchorTag: "#rsvp" },
   gift_registry_section: { label: "Presentes", anchorTag: "#presents" },
   gallery_section: { label: "Galería", anchorTag: "#gallery" },
+  agenda_section: { label: "Agenda", anchorTag: "#agenda" },
 };
