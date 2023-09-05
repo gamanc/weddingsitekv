@@ -5,6 +5,7 @@ import { SliceZone } from "@prismicio/react";
 import { components } from "../slices";
 import Navbar from "@/components/Navbar";
 import { AnchorTag } from "@/constants/MenuItems";
+import Footer from "@/components/Footer";
 
 type Props = {
   params: { id: string };
@@ -29,6 +30,7 @@ export default async function Home({ params, searchParams }: Props) {
       <main className={styles.main}>
         <SliceZone slices={slices} components={components} />
       </main>
+      <Footer />
     </>
   );
 }

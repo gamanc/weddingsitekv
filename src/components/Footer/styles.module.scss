@@ -1,0 +1,34 @@
+@import "@/styles/colors";
+
+$fontColor: lighten($color-text-primary, 20%);
+$fontSize: 16px;
+
+:export {
+  fontColor: $fontColor;
+}
+
+.footer {
+  height: 64px;
+  background-color: $color-beige-soft;
+  color: $fontColor;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+}
+
+.footerContent {
+  text-align: center;
+  p {
+    font-size: $fontSize;
+  }
+}
+
+.usernameLink {
+  color: $fontColor;
+  text-decoration: none;
+  font-size: $fontSize;
+  &:hover {
+    text-decoration: underline;
+  }
+}
