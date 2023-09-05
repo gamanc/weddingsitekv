@@ -1,0 +1,84 @@
+@import "@/styles/colors";
+
+:export {
+  fontColor: darken($color-beige-strong, 0.4);
+}
+
+.agenda {
+  width: 100%;
+  max-width: 400px; /* Adjust as needed */
+  margin: 10rem auto;
+}
+
+.timeline {
+  list-style: none;
+  padding: 0;
+  position: relative;
+  margin-left: 20px; /* Add left margin to the timeline to create space for the vertical line */
+}
+
+.event {
+  display: flex;
+  align-items: flex-start;
+  padding-bottom: 2rem;
+  position: relative;
+}
+
+$iconSize: 48px;
+$iconRightMargin: 3rem;
+$bulletSize: 15px;
+
+.bullet {
+  width: $bulletSize;
+  height: $bulletSize;
+  background-color: $color-text-primary; /* Adjust bullet color */
+  border-radius: 50%;
+  position: absolute;
+  left: calc(
+    $iconSize + $iconRightMargin / 2
+  ); /* Adjust the left position to align with the timeline */
+  top: 1rem;
+}
+
+.verticalLine {
+  background-color: $color-text-primary;
+  width: 1px;
+  height: 100%;
+  position: absolute;
+  left: calc(
+    $iconSize + $iconRightMargin / 2 + $bulletSize / 2
+  ); /* Adjust the left position to align with the bullet */
+  top: 1rem;
+}
+
+.eventContent {
+  display: flex;
+  align-items: flex-start;
+}
+
+.eventIcon {
+  width: $iconSize;
+  height: $iconSize;
+  margin-right: $iconRightMargin;
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+.eventDetails {
+  flex: 1;
+}
+
+.eventHour {
+  font-weight: bold;
+}
+
+.eventTitle {
+  font-weight: bold;
+}
+
+.eventSubtitle {
+  color: lighten($color-text-primary, 0.1);
+  font-size: 0.9rem;
+}
