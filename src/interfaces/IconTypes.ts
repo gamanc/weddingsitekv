@@ -1,0 +1,15 @@
+export type Icons =
+  | "cake-2"
+  | "calendar"
+  | "ceremony"
+  | "church"
+  | "dance"
+  | "dinner"
+  | "disco-ball"
+  | "drink"
+  | "margarita"
+  | "music"
+  | "party"
+  | "rings-2"
+  | "rings-heart"
+  | "rings";

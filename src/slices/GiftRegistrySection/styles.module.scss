@@ -91,6 +91,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    color: lighten($color-text-primary, 30%);
     svg {
       margin: 0 0.3em;
     }

@@ -15,6 +15,7 @@ import EnvelopeIcon from "@/icons/Envelope";
 import useGuestInfo from "@/hooks/useGuestInfo";
 import { useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
+import { hexToCssFilters } from "@/helpers/hexToCSSFilters";
 
 /**
  * Props for `GiftRegistrySection`.
@@ -79,13 +80,14 @@ const GiftRegistrySection = ({
                 height={271}
                 draggable={false}
                 priority
-                className={clsx("blue-filter", styles.giftRegistryLogo)}
+                style={{ filter: hexToCssFilters(styles.fontColor) }}
+                className={clsx(styles.giftRegistryLogo)}
                 src="/img/siman-logo.png"
                 alt="Siman logo"
               />
               <span>
                 Visitar mesa de regalos
-                <ExternalLinkIcon size={20} color="#9e6633" />
+                <ExternalLinkIcon size={20} color={styles.fontColor} />
               </span>
             </PrismicNextLink>
           </div>
