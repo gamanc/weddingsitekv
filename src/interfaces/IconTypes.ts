@@ -1,5 +1,5 @@
 export type Icons =
-  | "cake-2"
+  | "cake"
   | "calendar"
   | "ceremony"
   | "church"
