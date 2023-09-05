@@ -5,7 +5,7 @@ import Agenda from "@/components/Agenda";
 import { Event } from "@/interfaces/AgendaTypes";
 import Image from "next/image";
 import clsx from "clsx";
-import { DMSerifDisplay } from "@/app/fonts";
+import { DMSans, DMSerifDisplay } from "@/app/fonts";
 import { hexToCssFilters } from "@/helpers/hexToCSSFilters";
 
 /**
@@ -26,7 +26,7 @@ const AgendaSection = ({ slice }: AgendaSectionProps): JSX.Element => {
       id="agenda"
     >
       <Agenda events={slice.items as Event[]} />
-      <div className={clsx(styles.attire, DMSerifDisplay.className)}>
+      <div className={clsx(styles.attire, DMSans.className)}>
         <Image
           className={"block-touch-callout"}
           src="/icons/icon-formal-attire.png"

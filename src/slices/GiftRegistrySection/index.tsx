@@ -42,8 +42,6 @@ const GiftRegistrySection = ({
     [loading, guestInfo]
   );
 
-  console.log({ shouldDisplayGiftRegistry });
-
   const { monetaryPresentText, giftRegistryText, giftRegistryLink } =
     slice.primary;
   return (
