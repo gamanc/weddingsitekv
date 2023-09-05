@@ -49,7 +49,7 @@ const Navbar = ({ menuItems }: Props) => {
         style={{ textDecoration: "none" }}
         href="#"
       >
-        <h1>Kevin & Vanesa</h1>
+        <p>Kevin & Vanesa</p>
       </a>
       <div
         ref={hamburguerButton}
