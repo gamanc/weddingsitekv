@@ -1,8 +1,12 @@
 import { Content } from "@prismicio/client";
-import { SliceComponentProps } from "@prismicio/react";
+import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import styles from "./styles.module.scss";
 import Agenda from "@/components/Agenda";
 import { Event } from "@/interfaces/AgendaTypes";
+import Image from "next/image";
+import clsx from "clsx";
+import { DMSerifDisplay } from "@/app/fonts";
+import { hexToCssFilters } from "@/helpers/hexToCSSFilters";
 
 /**
  * Props for `AgendaSection`.
@@ -22,6 +26,18 @@ const AgendaSection = ({ slice }: AgendaSectionProps): JSX.Element => {
       id="agenda"
     >
       <Agenda events={slice.items as Event[]} />
+      <div className={clsx(styles.attire, DMSerifDisplay.className)}>
+        <Image
+          className={"block-touch-callout"}
+          src="/icons/icon-formal-attire.png"
+          alt="Formal attire required"
+          style={{ filter: hexToCssFilters(styles.iconColor) }}
+          width={200}
+          height={200}
+          priority
+        />
+        <PrismicRichText field={slice.primary.attireText} />
+      </div>
     </section>
   );
 };

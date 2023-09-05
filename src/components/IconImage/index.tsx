@@ -14,7 +14,7 @@ const IconImage = ({ icon, alt, color }: Props) => {
     <Image
       className={"block-touch-callout"}
       style={{
-        filter: `${hexToCssFilters(color)}`,
+        filter: hexToCssFilters(color),
       }}
       src={`/icons/icon-${icon}.png`}
       width={200}

@@ -1,13 +1,42 @@
 @import "@/styles/colors";
 @import "@/styles/mixins";
 
+:export {
+  iconColor: darken($color-beige-strong, 25%);
+}
+
 .container {
   display: flex;
+  flex-direction: column;
   transition: all 0.4s;
   width: 100%;
   position: relative;
-  padding: 5rem 0 2rem 0;
+  justify-content: center;
+  align-items: center;
+  padding: 7rem 0 4rem 0;
   height: fit-content;
   min-height: 100vh;
   user-select: none;
+  gap: 3rem;
+
+  @include for-large-devices {
+    flex-direction: row;
+  }
+}
+
+.attire {
+  display: flex;
+  color: $color-text-primary;
+  gap: 2rem;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  height: fit-content;
+
+  img {
+    width: 150px;
+    height: auto;
+    object-fit: cover;
+  }
 }
