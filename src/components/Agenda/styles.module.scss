@@ -1,20 +1,21 @@
 @import "@/styles/colors";
 
 :export {
-  fontColor: darken($color-beige-strong, 0.4);
+  fontColor: $color-beige-strong;
 }
 
 .agenda {
   width: 100%;
-  max-width: 400px; /* Adjust as needed */
+  max-width: 500px;
   margin: 10rem auto;
+  color: $color-text-primary;
 }
 
 .timeline {
   list-style: none;
   padding: 0;
   position: relative;
-  margin-left: 20px; /* Add left margin to the timeline to create space for the vertical line */
+  margin-left: 20px;
 }
 
 .event {
@@ -76,9 +77,10 @@ $bulletSize: 15px;
 
 .eventTitle {
   font-weight: bold;
+  font-size: 1.5rem;
 }
 
 .eventSubtitle {
-  color: lighten($color-text-primary, 0.1);
+  color: lighten($color-text-primary, 30%);
   font-size: 0.9rem;
 }

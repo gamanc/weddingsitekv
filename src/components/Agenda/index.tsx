@@ -3,6 +3,9 @@ import { Event } from "@/interfaces/AgendaTypes";
 import styles from "./styles.module.scss";
 import IconImage from "../IconImage";
 
+import { cinzel, DMSerifDisplay } from "@/app/fonts";
+import clsx from "clsx";
+
 interface AgendaProps {
   events: Event[];
 }
@@ -21,11 +24,19 @@ const Agenda: React.FC<AgendaProps> = ({ events }) => {
               />
             </div>
             <div className={styles.bullet} />
-            <div className={styles.verticalLine} />
+            {index < events.length - 1 ? (
+              <div className={styles.verticalLine} />
+            ) : null}
             <div className={styles.eventContent}>
               <div className={styles.eventDetails}>
-                <div className={styles.eventHour}>{event.hour}</div>
-                <div className={styles.eventTitle}>{event.title}</div>
+                <div className={clsx(styles.eventHour, cinzel.className)}>
+                  {event.hour}
+                </div>
+                <div
+                  className={clsx(styles.eventTitle, DMSerifDisplay.className)}
+                >
+                  {event.title}
+                </div>
                 {event.subtitle && (
                   <div className={styles.eventSubtitle}>{event.subtitle}</div>
                 )}
@@ -33,9 +44,6 @@ const Agenda: React.FC<AgendaProps> = ({ events }) => {
             </div>
           </li>
         ))}
-        <li className={styles.event}>
-          <div className={styles.bullet} />
-        </li>
       </ul>
     </div>
   );
