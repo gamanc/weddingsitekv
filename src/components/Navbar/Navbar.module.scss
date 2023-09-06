@@ -142,6 +142,7 @@
 
 @media only screen and (max-width: 992px) {
   .navMenu {
+    border: 1px solid red;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -163,7 +164,7 @@
 
   .navLinks {
     text-align: center;
-    padding: 3rem;
+    padding: 2rem;
     width: 100%;
     display: table;
     font-size: 1.4em;
