@@ -602,13 +602,13 @@ interface WelcomeSectionSliceDefaultPrimary {
   /**
    * Welcome Text field in *WelcomeSection → Primary*
    *
-   * - **Field Type**: Text
+   * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
    * - **API ID Path**: welcome_section.primary.welcomeText
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
    *
    */
-  welcomeText: prismic.KeyTextField;
+  welcomeText: prismic.RichTextField;
 }
 /**
  * Default variation for WelcomeSection Slice

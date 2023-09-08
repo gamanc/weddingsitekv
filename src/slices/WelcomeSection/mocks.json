@@ -4,9 +4,15 @@
 		"variation": "default",
 		"primary": {
 			"welcomeText": {
-				"__TYPE__": "FieldContent",
-				"value": "short",
-				"type": "Text"
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Exercitation enim id Lorem excepteur eu eiusmod incididunt dolor velit officia duis culpa culpa ex nulla. Exercitation officia laboris minim exercitation laborum esse Lorem. Ex labore proident dolor velit eu id non sit irure pariatur."
+						}
+					}
+				]
 			}
 		},
 		"items": []
