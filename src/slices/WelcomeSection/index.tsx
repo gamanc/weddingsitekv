@@ -2,7 +2,11 @@
 import { useEffect, useState } from "react";
 import { Content, asDate } from "@prismicio/client";
 import { createClient } from "@/prismicio";
-import { SliceComponentProps, usePrismicClient } from "@prismicio/react";
+import {
+  PrismicRichText,
+  SliceComponentProps,
+  usePrismicClient,
+} from "@prismicio/react";
 import clsx from "clsx";
 
 import FloralOrnament from "@/components/FloralOrnament";
@@ -27,7 +31,6 @@ const WelcomeSection = ({ slice }: WelcomeSectionProps): JSX.Element => {
     getConfigs();
   }, []);
 
-  const { welcomeText } = slice.primary;
   return (
     <section
       data-slice-type={slice.slice_type}
@@ -36,7 +39,9 @@ const WelcomeSection = ({ slice }: WelcomeSectionProps): JSX.Element => {
       id="welcome"
     >
       <div className={styles.content}>
-        <span className={styles.welcomeText}>{welcomeText}</span>
+        <div className={styles.welcomeText}>
+          <PrismicRichText field={slice.primary.welcomeText} />
+        </div>
         <DividerOrnament />
         {weddingDate && <Countdown targetDate={weddingDate} />}
       </div>
