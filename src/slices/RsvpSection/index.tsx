@@ -32,6 +32,7 @@ const RsvpSection = ({ slice }: RsvpSectionProps): JSX.Element => {
   const { getFadeClassNames, getTargetRef } = useFadeOnScroll({
     containerClass: "fade-in-out",
     visibleClass: clsx("visible", styles.guestNameVisible),
+    delay: 250,
   });
 
   const {
@@ -40,7 +41,7 @@ const RsvpSection = ({ slice }: RsvpSectionProps): JSX.Element => {
   } = useFadeOnScroll({
     containerClass: "fade-in-out",
     visibleClass: "visible",
-    delay: 1000,
+    delay: 400,
   });
 
   useEffect(() => {
