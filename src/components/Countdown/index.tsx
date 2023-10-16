@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, memo } from "react";
 import { cinzel } from "@/app/fonts";
 import styles from "./styles.module.scss";
 import clsx from "clsx";
@@ -68,4 +68,4 @@ const Countdown = ({ targetDate }: Props) => {
   );
 };
 
-export default Countdown;
+export default memo(Countdown);
