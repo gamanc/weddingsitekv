@@ -28,11 +28,16 @@ const Countdown = ({ targetDate }: Props) => {
   const [timeRemaining, setTimeRemaining] = useState(calculateTimeRemaining());
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setTimeRemaining(calculateTimeRemaining());
-    }, 1000);
+    let animationFrameId: number;
 
-    return () => clearInterval(interval);
+    const updateCountdown = () => {
+      setTimeRemaining(calculateTimeRemaining());
+      animationFrameId = requestAnimationFrame(updateCountdown);
+    };
+
+    animationFrameId = requestAnimationFrame(updateCountdown);
+
+    return () => cancelAnimationFrame(animationFrameId);
   }, []);
 
   return (

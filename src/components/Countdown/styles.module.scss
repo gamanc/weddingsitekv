@@ -32,6 +32,7 @@ $countdownFlipDuration: 0.2s;
       font-size: 3rem;
       animation: flipDown $countdownFlipDuration alternate-reverse;
       transition: transform $countdownFlipDuration;
+      will-change: transform;
       @include for-extra-small-devices {
         font-size: 2.3rem;
       }
