@@ -24,11 +24,16 @@ exports.sendTelegramMessage = functions.firestore
         const querySnapshot = await guestsCollection.get();
         let totalAdults = 0;
         let totalKids = 0;
+        let totalDeclined = 0;
 
         querySnapshot.forEach((doc) => {
           const data = doc.data();
           totalAdults += data.confirmedAdults || 0;
           totalKids += data.confirmedKids || 0;
+          if (data.willAttend === "no") {
+            totalDeclined +=
+              parseInt(data.adults, 10) + parseInt(data.kids, 10);
+          }
         });
 
         const message = `🤖: *${data.name}* has ${
@@ -41,7 +46,7 @@ exports.sendTelegramMessage = functions.firestore
           data.message ? `They wanted to say: \n _${data.message}_` : ""
         }\n\n*Confirmed Attendees Balance*\nAdults: ${totalAdults}\nKids: ${totalKids}\n*Total Attendees: ${
           totalAdults + totalKids
-        }*\n🤓📝`;
+        }*\nTotal Declined: *${totalDeclined}*\n🤓📝`;
 
         const telegramApiToken = process.env.BOT_TOKEN;
         const chatId = process.env.CHANNEL_ID;
