@@ -13,6 +13,9 @@ import FloralOrnament from "@/components/FloralOrnament";
 import Countdown from "@/components/Countdown";
 import DividerOrnament from "@/components/DividerOrnament";
 import styles from "./styles.module.scss";
+import useCountdown from "@/hooks/useCountdown";
+import { useWindowSize } from "react-use";
+import ReactConfetti from "react-confetti";
 
 export type WelcomeSectionProps =
   SliceComponentProps<Content.WelcomeSectionSlice>;
@@ -20,6 +23,9 @@ export type WelcomeSectionProps =
 const WelcomeSection = ({ slice }: WelcomeSectionProps): JSX.Element => {
   const [weddingDate, setWeddingDate] = useState<Date | null>(null);
   const client = usePrismicClient(createClient());
+
+  const { isFinished } = useCountdown(weddingDate);
+  const { width, height } = useWindowSize();
 
   useEffect(() => {
     const getConfigs = async () => {
@@ -38,6 +44,23 @@ const WelcomeSection = ({ slice }: WelcomeSectionProps): JSX.Element => {
       className={clsx("full-screen", styles.container)}
       id="welcome"
     >
+      {isFinished && (
+        <ReactConfetti
+          className={styles["confetti"]}
+          width={width}
+          height={height}
+          gravity={0.04}
+          numberOfPieces={150}
+          colors={[
+            "#b0e57c",
+            "#8ed8f8",
+            "#009688",
+            "#ffd700",
+            "#969590",
+            "#add8e6",
+          ]}
+        />
+      )}
       <div className={styles.content}>
         <div className={styles.welcomeText}>
           <PrismicRichText field={slice.primary.welcomeText} />

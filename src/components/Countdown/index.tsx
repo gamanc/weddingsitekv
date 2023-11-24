@@ -1,44 +1,17 @@
-import React, { useState, useEffect, memo } from "react";
+import React, { useState, useEffect, memo, useMemo } from "react";
 import { cinzel } from "@/app/fonts";
+import { useWindowSize } from "react-use";
 import styles from "./styles.module.scss";
 import clsx from "clsx";
+import ReactConfetti from "react-confetti";
+import useCountdown from "@/hooks/useCountdown";
 
 interface Props {
   targetDate: Date;
 }
 
 const Countdown = ({ targetDate }: Props) => {
-  const calculateTimeRemaining = () => {
-    const now = new Date().getTime();
-    const targetTime = targetDate.getTime();
-    const timeRemaining = targetTime - now;
-
-    const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
-    const hours = Math.floor(
-      (timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-    );
-    const minutes = Math.floor(
-      (timeRemaining % (1000 * 60 * 60)) / (1000 * 60)
-    );
-    const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
-
-    return { days, hours, minutes, seconds };
-  };
-
-  const [timeRemaining, setTimeRemaining] = useState(calculateTimeRemaining());
-
-  useEffect(() => {
-    let animationFrameId: number;
-
-    const updateCountdown = () => {
-      setTimeRemaining(calculateTimeRemaining());
-      animationFrameId = requestAnimationFrame(updateCountdown);
-    };
-
-    animationFrameId = requestAnimationFrame(updateCountdown);
-
-    return () => cancelAnimationFrame(animationFrameId);
-  }, []);
+  const { timeRemaining } = useCountdown(targetDate);
 
   return (
     <div className={clsx(styles.countdown, cinzel.className)}>
