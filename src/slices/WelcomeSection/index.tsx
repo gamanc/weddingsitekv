@@ -24,7 +24,9 @@ const WelcomeSection = ({ slice }: WelcomeSectionProps): JSX.Element => {
   const [weddingDate, setWeddingDate] = useState<Date | null>(null);
   const client = usePrismicClient(createClient());
 
-  const { isFinished } = useCountdown(weddingDate);
+  const { isFinished } = useCountdown(
+    weddingDate || new Date("November 25, 2023 16:00:00")
+  );
   const { width, height } = useWindowSize();
 
   useEffect(() => {
@@ -44,7 +46,7 @@ const WelcomeSection = ({ slice }: WelcomeSectionProps): JSX.Element => {
       className={clsx("full-screen", styles.container)}
       id="welcome"
     >
-      {isFinished && (
+      {isFinished && weddingDate && (
         <ReactConfetti
           className={styles["confetti"]}
           width={width}
