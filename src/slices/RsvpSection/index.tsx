@@ -15,7 +15,11 @@ import { DMSerifDisplay } from "@/app/fonts";
 import FloralOrnament from "@/components/FloralOrnament";
 import useFadeOnScroll from "@/hooks/useFadeOnScroll";
 import DemoNoticeModal from "@/components/DemoNoticeModal";
-import { buildChatPreview, isDemoKey } from "@/constants/demo";
+import {
+  DEMO_RESPONSE_MESSAGES,
+  buildChatPreview,
+  isDemoKey,
+} from "@/constants/demo";
 import { getGuestKey } from "@/helpers/getGuestKey";
 
 /**
@@ -135,7 +139,17 @@ const RsvpSection = ({ slice }: RsvpSectionProps): React.JSX.Element => {
               getContentFadeClassNames()
             )}
           >
-            <PrismicRichText field={slice.primary.inviteAcceptedMessage} />
+            {isDemo ? (
+              <p>
+                <strong>
+                  <em>{DEMO_RESPONSE_MESSAGES.accepted.title}</em>
+                </strong>
+                <br />
+                {DEMO_RESPONSE_MESSAGES.accepted.body}
+              </p>
+            ) : (
+              <PrismicRichText field={slice.primary.inviteAcceptedMessage} />
+            )}
           </div>
         )}
 
@@ -147,7 +161,11 @@ const RsvpSection = ({ slice }: RsvpSectionProps): React.JSX.Element => {
               getContentFadeClassNames()
             )}
           >
-            <PrismicRichText field={slice.primary.inviteDeclinedMessage} />
+            {isDemo ? (
+              <p>{DEMO_RESPONSE_MESSAGES.declined.body}</p>
+            ) : (
+              <PrismicRichText field={slice.primary.inviteDeclinedMessage} />
+            )}
           </div>
         )}
       </div>
