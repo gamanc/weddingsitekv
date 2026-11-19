@@ -6,7 +6,7 @@
  *
  * See a full list of supported triggers at https://firebase.google.com/docs/functions
  */
-const functions = require("firebase-functions");
+const functions = require("firebase-functions/v1");
 const admin = require("firebase-admin");
 const axios = require("axios");
 
@@ -15,6 +15,10 @@ admin.initializeApp();
 exports.sendTelegramMessage = functions.firestore
   .document("guests/{docId}")
   .onWrite(async (snapshot, context) => {
+    // Showcase invitations are handled on the client and must never notify.
+    if (context.params.docId.startsWith("demo")) return;
+    if (!snapshot.after.exists) return;
+
     const data = snapshot.after.data();
 
     if (data.willAttend !== "noresponse") {
@@ -66,10 +70,60 @@ exports.sendTelegramMessage = functions.firestore
     }
   });
 
-// Create and deploy your first functions
-// https://firebase.google.com/docs/functions/get-started
+exports.sendTelegramMessageJonGaby = functions.firestore
+  .document("guestsJonGaby/{docId}")
+  .onWrite(async (snapshot, context) => {
+    // Showcase invitations are handled on the client and must never notify.
+    if (context.params.docId.startsWith("demo")) return;
+    if (!snapshot.after.exists) return;
 
-// exports.helloWorld = onRequest((request, response) => {
-//   logger.info("Hello logs!", {structuredData: true});
-//   response.send("Hello from Firebase!");
-// });
+    const data = snapshot.after.data();
+
+    if (data.willAttend !== "noresponse") {
+      const guestsCollection = admin.firestore().collection("guestsJonGaby");
+
+      try {
+        const querySnapshot = await guestsCollection.get();
+        let totalAdults = 0;
+        let totalKids = 0;
+        let totalDeclined = 0;
+
+        querySnapshot.forEach((doc) => {
+          const data = doc.data();
+          totalAdults += data.confirmedAdults || 0;
+          totalKids += data.confirmedKids || 0;
+          if (data.willAttend === "no") {
+            totalDeclined +=
+              parseInt(data.adults, 10) + parseInt(data.kids, 10);
+          }
+        });
+
+        const message = `💍🤖: *${data.name}* has ${
+          data.willAttend === "yes" ? "accepted" : "declined"
+        } the invitation to the wedding. \n${
+          data.willAttend === "yes"
+            ? `Adults: ${data.confirmedAdults}\nKids: ${data.confirmedKids}\n`
+            : ""
+        }${
+          data.message ? `They wanted to say: \n _${data.message}_` : ""
+        }\n\n*Confirmed Attendees Balance*\nAdults: ${totalAdults}\nKids: ${totalKids}\n*Total Attendees: ${
+          totalAdults + totalKids
+        }*\nTotal Declined: *${totalDeclined}*\n🤓📝`;
+
+        const telegramApiToken = process.env.BOT_TOKEN;
+        const chatId = process.env.JONGABY_CHANNEL_ID;
+
+        const telegramApiUrl = `https://api.telegram.org/bot${telegramApiToken}/sendMessage`;
+
+        await axios.post(telegramApiUrl, {
+          chat_id: chatId,
+          text: message,
+          parse_mode: "markdown",
+        });
+
+        console.log("Telegram message sent successfully.");
+      } catch (error) {
+        console.error("Error sending Telegram message:", error);
+      }
+    }
+  });
