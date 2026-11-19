@@ -17,7 +17,7 @@ export type AgendaSectionProps =
 /**
  * Component for "AgendaSection" Slices.
  */
-const AgendaSection = ({ slice }: AgendaSectionProps): JSX.Element => {
+const AgendaSection = ({ slice }: AgendaSectionProps): React.JSX.Element => {
   return (
     <section
       data-slice-type={slice.slice_type}

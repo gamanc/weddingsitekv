@@ -1,18 +1,13 @@
 import { createClient } from "@/prismicio";
 import styles from "./page.module.scss";
-import { Metadata, ResolvingMetadata } from "next";
+import { Metadata, Viewport } from "next";
 import { SliceZone } from "@prismicio/react";
 import { components } from "../slices";
 import Navbar from "@/components/Navbar";
 import { AnchorTag } from "@/constants/MenuItems";
 import Footer from "@/components/Footer";
 
-type Props = {
-  params: { id: string };
-  searchParams: { [key: string]: string | string[] | undefined };
-};
-
-export default async function Home({ params, searchParams }: Props) {
+export default async function Home() {
   const client = createClient();
   const page = await client.getByUID("page", ".");
 
@@ -35,10 +30,11 @@ export default async function Home({ params, searchParams }: Props) {
   );
 }
 
-export async function generateMetadata(
-  { params, searchParams }: Props,
-  parent: ResolvingMetadata
-): Promise<Metadata> {
+export const viewport: Viewport = {
+  themeColor: styles.themeColor,
+};
+
+export async function generateMetadata(): Promise<Metadata> {
   const client = createClient();
   const page = await client.getByUID("page", ".");
 
@@ -57,6 +53,5 @@ export async function generateMetadata(
         },
       ],
     },
-    themeColor: styles.themeColor,
   };
 }

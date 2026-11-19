@@ -1,12 +1,8 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Content, asDate } from "@prismicio/client";
 import { createClient } from "@/prismicio";
-import {
-  PrismicRichText,
-  SliceComponentProps,
-  usePrismicClient,
-} from "@prismicio/react";
+import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import clsx from "clsx";
 
 import FloralOrnament from "@/components/FloralOrnament";
@@ -20,9 +16,9 @@ import ReactConfetti from "react-confetti";
 export type WelcomeSectionProps =
   SliceComponentProps<Content.WelcomeSectionSlice>;
 
-const WelcomeSection = ({ slice }: WelcomeSectionProps): JSX.Element => {
+const WelcomeSection = ({ slice }: WelcomeSectionProps): React.JSX.Element => {
   const [weddingDate, setWeddingDate] = useState<Date | null>(null);
-  const client = usePrismicClient(createClient());
+  const client = useMemo(() => createClient(), []);
 
   const { isFinished } = useCountdown(
     weddingDate || new Date("November 25, 2023 16:00:00")

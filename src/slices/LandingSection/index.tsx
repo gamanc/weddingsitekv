@@ -1,24 +1,24 @@
 "use client";
 import { Content, asDate } from "@prismicio/client";
-import { SliceComponentProps, usePrismicClient } from "@prismicio/react";
+import { SliceComponentProps } from "@prismicio/react";
 import clsx from "clsx";
 
 import FloralOrnament from "@/components/FloralOrnament";
 import { cinzel, cinzelDecorative, manuscript } from "@/app/fonts";
 import styles from "./styles.module.scss";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { createClient } from "@/prismicio";
 import { formatDateToString } from "@/helpers/dates";
 
 export type LandingSectionProps =
   SliceComponentProps<Content.LandingSectionSlice>;
 
-const LandingSection = ({ slice }: LandingSectionProps): JSX.Element => {
+const LandingSection = ({ slice }: LandingSectionProps): React.JSX.Element => {
   const [weddingDate, setWeddingDate] = useState<Date | null>(null);
 
   const weddingDateString = formatDateToString(weddingDate);
 
-  const client = usePrismicClient(createClient());
+  const client = useMemo(() => createClient(), []);
   useEffect(() => {
     const getConfigs = async () => {
       const configuration = await client.getSingle("siteConfiguration");

@@ -7,7 +7,7 @@ import styles from "./Navbar.module.scss";
 import clsx from "clsx";
 import { MenuItem } from "@/constants/MenuItems";
 import useGuestInfo from "@/hooks/useGuestInfo";
-import { useSearchParams } from "next/navigation";
+import { getGuestKey } from "@/helpers/getGuestKey";
 
 interface Props {
   menuItems: MenuItem[];
@@ -18,10 +18,9 @@ const Navbar = ({ menuItems }: Props) => {
   const hamburguerButton = useRef<HTMLDivElement>(null);
 
   const { guestInfo, fetchGuestInfo } = useGuestInfo();
-  const searchParams = useSearchParams();
 
   useEffect(() => {
-    const key = searchParams.get("key") || "";
+    const key = getGuestKey();
     if (key) {
       fetchGuestInfo(key);
     }

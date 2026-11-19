@@ -13,8 +13,8 @@ import { ExternalLink as ExternalLinkIcon, Gift } from "react-feather";
 import Image from "next/image";
 import EnvelopeIcon from "@/icons/Envelope";
 import useGuestInfo from "@/hooks/useGuestInfo";
-import { useEffect, useMemo, useState } from "react";
-import { useSearchParams } from "next/navigation";
+import { useEffect, useMemo } from "react";
+import { getGuestKey } from "@/helpers/getGuestKey";
 import { hexToCssFilters } from "@/helpers/hexToCSSFilters";
 
 /**
@@ -28,13 +28,11 @@ export type GiftRegistrySectionProps =
  */
 const GiftRegistrySection = ({
   slice,
-}: GiftRegistrySectionProps): JSX.Element => {
+}: GiftRegistrySectionProps): React.JSX.Element => {
   const { loading, guestInfo, fetchGuestInfo } = useGuestInfo();
-  const searchParams = useSearchParams();
 
   useEffect(() => {
-    const key = searchParams.get("key");
-    fetchGuestInfo(key || "");
+    fetchGuestInfo(getGuestKey());
   }, []);
 
   const shouldDisplayGiftRegistry = useMemo(

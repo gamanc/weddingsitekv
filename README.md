@@ -1,3 +1,14 @@
+> [!IMPORTANT]
+> **Pending: redeploy Cloud Functions.** `functions/` was upgraded (firebase-functions 7 with the v1 API, firebase-admin 14, axios, Node 18 → 22) and both Telegram triggers now ignore `demo*` guest docs and deleted docs. These changes are **not deployed yet**. When ready:
+> ```bash
+> cd functions && npm install && npm run deploy
+> ```
+> Until then, production keeps running the previous functions build. The site does not depend on this, because demo invitations never write to Firestore.
+
+## Demo invitations
+
+Open the site with `?key=demo` (family invite) or `?key=demo-pareja` (couple invite) to see every feature without a real guest key. Submitting the RSVP form only shows a popup that explains the notification the couple would receive. Nothing is saved. Demo guests are defined in `src/constants/demo.ts`.
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started

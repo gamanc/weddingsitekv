@@ -1,6 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
-import { useSearchParams } from "next/navigation";
+import { useCallback, useEffect, useState } from "react";
 
 import { Content } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
@@ -15,6 +14,9 @@ import DividerOrnament from "@/components/DividerOrnament";
 import { DMSerifDisplay } from "@/app/fonts";
 import FloralOrnament from "@/components/FloralOrnament";
 import useFadeOnScroll from "@/hooks/useFadeOnScroll";
+import DemoNoticeModal from "@/components/DemoNoticeModal";
+import { buildChatPreview, isDemoKey } from "@/constants/demo";
+import { getGuestKey } from "@/helpers/getGuestKey";
 
 /**
  * Props for `RsvpSection`.
@@ -24,10 +26,12 @@ export type RsvpSectionProps = SliceComponentProps<Content.RsvpSectionSlice>;
 /**
  * Component for "RsvpSection" Slices.
  */
-const RsvpSection = ({ slice }: RsvpSectionProps): JSX.Element => {
-  const { loading, guestInfo, fetchGuestInfo } = useGuestInfo();
+const RsvpSection = ({ slice }: RsvpSectionProps): React.JSX.Element => {
+  const { loading, guestInfo, fetchGuestInfo, applyLocalResponse } =
+    useGuestInfo();
   const [guestKey, setGuestKey] = useState("");
-  const searchParams = useSearchParams();
+  const [demoResponse, setDemoResponse] = useState<RSVPFormData | null>(null);
+  const isDemo = isDemoKey(guestKey);
 
   const { getFadeClassNames, getTargetRef } = useFadeOnScroll({
     containerClass: "fade-in-out",
@@ -45,9 +49,9 @@ const RsvpSection = ({ slice }: RsvpSectionProps): JSX.Element => {
   });
 
   useEffect(() => {
-    const key = searchParams.get("key");
-    setGuestKey(key || "");
-    fetchGuestInfo(key || "");
+    const key = getGuestKey();
+    setGuestKey(key);
+    fetchGuestInfo(key);
   }, []);
 
   const onSubmit = async (data: RSVPFormData) => {
@@ -61,9 +65,19 @@ const RsvpSection = ({ slice }: RsvpSectionProps): JSX.Element => {
       data.confirmedKids = 0;
     }
 
+    if (isDemo) {
+      setDemoResponse(data);
+      return;
+    }
+
     await updateData("guests", guestKey, data);
     await fetchGuestInfo(guestKey);
   };
+
+  const closeDemoNotice = useCallback(() => {
+    if (demoResponse) applyLocalResponse(demoResponse);
+    setDemoResponse(null);
+  }, [demoResponse, applyLocalResponse]);
 
   if (!loading && !guestInfo) return <></>;
 
@@ -84,6 +98,11 @@ const RsvpSection = ({ slice }: RsvpSectionProps): JSX.Element => {
             <h1 className={clsx(styles.guestName, DMSerifDisplay.className)}>
               {guestInfo.name}
             </h1>
+            {isDemo && (
+              <p className={styles.demoNote}>
+                Invitación de demostración · Demo invitation
+              </p>
+            )}
             <DividerOrnament />
           </div>
         )}
@@ -132,6 +151,12 @@ const RsvpSection = ({ slice }: RsvpSectionProps): JSX.Element => {
           </div>
         )}
       </div>
+      {demoResponse && guestInfo && (
+        <DemoNoticeModal
+          previewLines={buildChatPreview(guestInfo.name, demoResponse)}
+          onClose={closeDemoNotice}
+        />
+      )}
     </section>
   );
 };

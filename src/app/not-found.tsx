@@ -2,6 +2,7 @@ import React from "react";
 
 import styles from "./not-found.module.scss";
 import clsx from "clsx";
+import Link from "next/link";
 import DividerOrnament from "@/components/DividerOrnament";
 import FloralOrnament from "@/components/FloralOrnament";
 import { DMSerifDisplay, cinzelDecorative } from "./fonts";
@@ -15,9 +16,7 @@ const NotFound = () => {
         </span>
         <span className={styles.message}>
           La página que buscas se escapó a la luna de miel. Regresa a la{" "}
-          <a href="/" rel="noopener noreferrer">
-            página de inicio
-          </a>{" "}
+          <Link href="/">página de inicio</Link>{" "}
           para seguir con la celebración.
         </span>
         <DividerOrnament />

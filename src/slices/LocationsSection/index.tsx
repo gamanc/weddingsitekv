@@ -17,7 +17,7 @@ export type LocationsSectionProps =
 /**
  * Component for "LocationsSection" Slices.
  */
-const LocationsSection = ({ slice }: LocationsSectionProps): JSX.Element => {
+const LocationsSection = ({ slice }: LocationsSectionProps): React.JSX.Element => {
   const {
     ceremonyLocationName,
     ceremonyLocationAddress,

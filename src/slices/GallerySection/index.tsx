@@ -14,7 +14,7 @@ export type GallerySectionProps =
  * Component for "GallerySection" Slices.
  */
 
-const GallerySection = ({ slice }: GallerySectionProps): JSX.Element => {
+const GallerySection = ({ slice }: GallerySectionProps): React.JSX.Element => {
   return (
     <section
       data-slice-type={slice.slice_type}
